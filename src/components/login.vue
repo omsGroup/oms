@@ -2,24 +2,24 @@
     <div class="login-pages flex-center-center">
         <div class="login-box flex-center-center">
             <el-form ref="form"
-                     :model="form" 
+                     :model="form"
                      :rules="loginRules"
                      label-width="85px">
                 <el-row>
                     <el-col :span="24">
-                        <el-form-item label="用户名:" 
+                        <el-form-item label="用户名:"
                                       prop="userName">
                             <el-input v-model="form.userName"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="24">
-                        <el-form-item label="密码:" 
+                        <el-form-item label="密码:"
                                       prop="pass">
                             <el-input v-model="form.pass"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="24">
-                        <el-form-item label="确认密码:" 
+                        <el-form-item label="确认密码:"
                                       prop="confirmPass">
                             <el-input v-model="form.confirmPass"></el-input>
                         </el-form-item>
@@ -33,10 +33,10 @@
                     </el-col>
                 </el-row>
                 <div class="login-button">
-                    <el-button type="primary" 
-                               @click="submitLogin">登录</el-button>
                     <el-button type="primary"
                                @click="retrievePass">找回密码</el-button>
+                    <el-button type="primary"
+                               @click="submitLogin">登录</el-button>
                     <el-button type="primary"
                                @click="submitLogin">注册</el-button>
                 </div>
@@ -47,46 +47,53 @@
 <script>
 export default {
     data() {
-        let confirmPassword=(rule,value,callback)=>{
-            if(value===''){
-                callback(new Error('请输入密码'))
-            }else if(value!==this.form.pass){
-                callback(new Error('两次输入密码不同'));
-            }else{
-                callback();
+        let confirmPassword = (rule, value, callback) => {
+            if (value === "") {
+                callback(new Error("请输入密码"))
+            } else if (value !== this.form.pass) {
+                callback(new Error("两次输入密码不同"))
+            } else {
+                callback()
             }
-        };
-        let confirmCaptcha=(rule,value,callback)=>{
-            let reg=/^\d{4}\b/;
+        }
+        let confirmCaptcha = (rule, value, callback) => {
+            let reg = /^\d{4}\b/
             console.log(reg.test(1234))
-            if(value ===''){
-                callback(new Error('请输入验证码'))
-            }else if(value.length !== 4 || !reg.test(value)){
-                callback(new Error('请输入四位数字验证码'))
-            }else{
+            if (value === "") {
+                callback(new Error("请输入验证码"))
+            } else if (value.length !== 4 || !reg.test(value)) {
+                callback(new Error("请输入四位数字验证码"))
+            } else {
                 callback()
             }
         }
         return {
             form: {
-                userName:'',
-                pass:'',
-                captcha:'',
-                confirmPass:''
+                userName: "",
+                pass: "",
+                captcha: "",
+                confirmPass: ""
             },
-            loginRules:{
-                userName:[
-                    {required:true,message:'请输入用户名',trigger:'blur'}
-                ],
-                pass:[
-                    {required:true,message:'请输入6-12位数字+字母验证码',trigger:'blur'}
-                ],
-                confirmPass:[
-                    {required:true,validator:confirmPassword,trigger:'blur'}
-                ],
-                captcha:[
-                    {validator:confirmCaptcha,trigger:['blur','change']},
-                ]
+            loginRules: {
+                userName: [{
+                    required: true,
+                    message: "请输入用户名",
+                    trigger: "blur"
+                }],
+                pass: [{
+                    required: true,
+                    message: "请输入6-12位数字+字母验证码",
+                    trigger: "blur"
+                }],
+                confirmPass: [{
+                    required: true,
+                    validator: confirmPassword,
+                    trigger: "blur"
+                }],
+                captcha: [{
+                    validator: confirmCaptcha,
+                    trigger: ["blur", "change"]
+                }]
             }
         }
     },
@@ -95,13 +102,13 @@ export default {
     },
     methods: {
         submitLogin() {
-            this.$refs.form.validate((valid)=>{
-                if(valid){
-                    this.$message.success('登录成功')
+            this.$refs.form.validate((valid) => {
+                if (valid) {
+                    this.$message.success("登录成功")
                 }
             })
         },
-        retrievePass(){
+        retrievePass() {
 
         }
     }
