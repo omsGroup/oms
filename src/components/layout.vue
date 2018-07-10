@@ -1,11 +1,19 @@
 <template>
     <div class="layout-pages">
-        <div class="layout-aside">aside</div>
+        <div class="layout-aside">
+            <Aside/>
+        </div>
         <div class="layout-content">content</div>
     </div>
 </template>
 <script>
+import Vue from 'vue';
+import Aside from './aside.vue'
+
 export default {
+    components:{
+        Aside
+    },
     data() {
         return {
 
