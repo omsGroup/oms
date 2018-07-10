@@ -78,17 +78,14 @@ export default {
                 userName: [{
                     required: true,
                     message: "请输入用户名",
-                    trigger: "blur"
                 }],
                 pass: [{
                     required: true,
                     message: "请输入6-12位数字+字母验证码",
-                    trigger: "blur"
                 }],
                 confirmPass: [{
                     required: true,
                     validator: confirmPassword,
-                    trigger: "blur"
                 }],
                 captcha: [{
                     validator: confirmCaptcha,
@@ -104,7 +101,8 @@ export default {
         submitLogin() {
             this.$refs.form.validate((valid) => {
                 if (valid) {
-                    this.$message.success("登录成功")
+                    this.$message.success("登录成功");
+                    this.$router.replace('/layout')
                 }
             })
         },
