@@ -36,7 +36,9 @@ export default {
 <style lang="less">
 .layout-pages{
     width: 100%;
+    min-width: 1080px;
     height:100%;
+    min-height: 1000px;
     display: flex;
     justify-content: space-between;
     overflow: hidden;

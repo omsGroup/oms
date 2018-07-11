@@ -1,31 +1,16 @@
 <template>
     <div class="aside-pages">
-        <ul>
-            <li>
-                <span class="iconfont icon-all"></span>
-                <span class="aside-name">首页</span>
-            </li>
-            <li>
-                <span class="iconfont icon-all"></span>
-                <span class="aside-name">首页</span>
-            </li>
-            <li>
-                <span class="iconfont icon-all"></span>
-                <span class="aside-name">首页</span>
-            </li>
-            <li>
-                <span class="iconfont icon-all"></span>
-                <span class="aside-name">首页</span>
-            </li>
-            <li>
-                <span class="iconfont icon-all"></span>
-                <span class="aside-name">首页</span>
-            </li>
-            <li>
-                <span class="iconfont icon-all"></span>
-                <span class="aside-name">首页</span>
-            </li>
-        </ul>
+        <el-menu :default-active="$route.path" 
+                 :router="true"
+                 class="el-menu-demo"
+                 text-color="#fff"
+                 active-text-color="#ffd04b"
+                 background-color="#324057" 
+                 @select="handleSelect">
+            <el-menu-item index="/home">首页</el-menu-item>
+            <el-menu-item index="/table">表格</el-menu-item>
+            <el-menu-item index="3">图表</el-menu-item>
+        </el-menu>
     </div>
 </template>
 <script>
@@ -38,7 +23,9 @@ export default{
         }
     },
     methods:{
-
+        handleSelect(val){
+            console.log(val)
+        }
     }
 }    
 </script>
@@ -46,22 +33,6 @@ export default{
     .aside-pages{
         width: 100%;
         height: 100%;
-        ul{
-            margin: 0;
-            padding: 20px 0 0 0;
-           li{
-            color: #fff;
-            display: flex;
-            align-items: center;
-            height: 60px;
-            padding-left:20px;
-            cursor: pointer;
-            .aside-name{
-                margin-left: 10px;
-                font-size: 16px;
-            } 
-        } 
-        }
     }
 </style>
 
