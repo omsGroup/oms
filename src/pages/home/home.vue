@@ -12,7 +12,7 @@ export default{
             form:{},
             option:{
                 title: {
-                    text: 'ECharts 入门示例'
+                    text: '柱状统计图'
                 },
                 tooltip: {},
                 legend: {
