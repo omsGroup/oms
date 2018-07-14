@@ -2,14 +2,26 @@
     <div class="aside-pages">
         <el-menu :default-active="$route.path" 
                  :router="true"
+                 :unique-opened="true"
                  class="el-menu-demo"
                  text-color="#fff"
                  active-text-color="#ffd04b"
                  background-color="#324057" 
                  @select="handleSelect">
-            <el-menu-item index="/home">首页</el-menu-item>
-            <el-menu-item index="/table">表格</el-menu-item>
-            <el-menu-item index="3">图表</el-menu-item>
+            <el-menu-item index="/home">
+                <span class="iconfont icon-all"></span><span>首页</span>
+            </el-menu-item>
+            <el-submenu v-for="(item,index) in tabList" 
+                        :key="index" 
+                        :index="item.path">
+                <template slot="title">
+                    <span :class="'iconfont '+ item.icon"></span>
+                    <span>{{ item.label }}</span>
+                </template>
+                <el-menu-item v-for="(items,indexs) in item.options" 
+                              :key="indexs" 
+                              :index="items.path">{{ items.label }}</el-menu-item>
+            </el-submenu>
         </el-menu>
     </div>
 </template>
@@ -19,13 +31,18 @@ import Vue from 'vue';
 export default{
     data(){
         return {
-
+            tabList:[
+                {label:'用户',path:'/userInfo',icon:'icon-favorite',options:[{label:'用户信息',path:'/userInfo'}]},
+                {label:'审核',path:'/audit',icon:'icon-edit',options:[{label:'用户审核',path:'/audit'}]},
+                {label:'财务',path:'/finance',icon:'icon-gifts',options:[{label:'财务信息',path:'/finance'}]},
+                {label:'系统',path:'/system',icon:'icon-set',options:[{label:'系统设置',path:'/system'}]}
+            ]
         }
     },
     methods:{
         handleSelect(val){
-            console.log(val)
-        }
+            
+        },
     }
 }    
 </script>
@@ -33,6 +50,9 @@ export default{
     .aside-pages{
         width: 100%;
         height: 100%;
+        .iconfont{
+            margin-right:10px;
+        }
     }
 </style>
 
