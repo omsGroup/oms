@@ -33,9 +33,9 @@ export default{
         return {
             tabList:[
                 {label:'用户',path:'/userInfo',icon:'icon-favorite',options:[{label:'用户信息',path:'/userInfo'}]},
-                {label:'审核',path:'/audit',icon:'icon-edit',options:[{label:'用户审核',path:'/audit'}]},
-                {label:'财务',path:'/finance',icon:'icon-gifts',options:[{label:'财务信息',path:'/finance'}]},
-                {label:'系统',path:'/system',icon:'icon-set',options:[{label:'系统设置',path:'/system'}]}
+                {label:'审核',path:'/audit',icon:'icon-edit',options:[{label:'用户审核',path:'/userAudit'}]},
+                {label:'财务',path:'/finance',icon:'icon-gifts',options:[{label:'财务信息',path:'/financeInfo'}]},
+                {label:'系统',path:'/system',icon:'icon-set',options:[{label:'系统设置',path:'/systemSetting'}]}
             ]
         }
     },
