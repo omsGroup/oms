@@ -65,6 +65,17 @@
                 </el-table-column>
             </el-table>
         </div>
+        <div class="list-pagination">
+            <el-pagination
+                :total="totalCount"
+                :current-page="1"
+                :page-sizes="[10, 30, 50, 100]"
+                :page-size="10"
+                layout="total, sizes, prev, pager, next, jumper"
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange">
+            </el-pagination>
+        </div>
     </div>
 </template>
 <script>
@@ -89,6 +100,10 @@ export default {
         tableType:{
             type:Array,
             default:()=>[]
+        },
+        totalCount:{
+            type:Number,
+            default:()=>0
         }
     },
     data() {
@@ -99,6 +114,12 @@ export default {
     methods:{
         searchChange(val){
             console.log(this.searchForm)
+        },
+        handleSizeChange(val){
+            console.log(val)
+        },
+        handleCurrentChange(val){
+            console.log(val)
         }
     }
 }
@@ -130,6 +151,9 @@ export default {
         border-bottom: 1px solid #f0f2f7;
     }
     .table-body{
+        margin-top:15px;
+    }
+    .list-pagination{
         margin-top:15px;
     }
 }
