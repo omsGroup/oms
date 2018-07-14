@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import login from '@/components/login'
+const recover = r => require.ensure([], () => r(require('@/pages/recover/recover')), 'recover');
 const layout = r => require.ensure([], () => r(require('@/components/layout')), 'layout');
 const home = r => require.ensure([], () => r(require('@/pages/home/home')), 'home');
 const userInfo = r => require.ensure([], () => r(require('@/pages/user/userInfo')), 'userInfo');
@@ -40,5 +41,9 @@ export default new Router({
             name:'systemSetting',
             component:systemSetting
         }]
+    }, {
+        path: '/recover',
+        name: 'recover',
+        component: recover
     }]
 })

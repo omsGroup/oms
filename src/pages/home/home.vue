@@ -1,7 +1,16 @@
 <template>
     <div class="home-pages">
-        <div id="homeEchart" 
-             style="width:100%;height:400px"></div>
+        <el-row type="flex" 
+                justify="space-around">
+            <el-col :span="10">
+                <div id="homeBlockEchart" 
+                     class="chart-wrap left-chart"></div>
+            </el-col>
+            <el-col :span="10">
+                <div id="homeLineEchart" 
+                     class="chart-wrap right-chart"></div>
+            </el-col>
+        </el-row>
     </div>
 </template>
 <script>
@@ -10,9 +19,9 @@ export default{
     data(){
         return{
             form:{},
-            option:{
+            blockOption:{
                 title: {
-                    text: '柱状统计图'
+                    text: 'ECharts 入门示例'
                 },
                 tooltip: {},
                 legend: {
@@ -28,15 +37,47 @@ export default{
                     data: [5, 20, 36, 10, 10, 20]
                 }
                 ]
+            },
+            lineOption:{
+                title: {
+                    text: 'ECharts 折线图',
+                    textStyle:{
+                        color:'#666'
+                    }
+                },
+                tooltip: {},
+                legend: {
+                    data:['销量']
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [820, 932, 901, 934, 1290, 1330, 1320],
+                    type: 'line'
+                }]
             }
         }
     },
     mounted(){
-        let myCharts=echart.init(document.getElementById('homeEchart'))
-        myCharts.setOption(this.option)
+        let blockCharts=echart.init(document.getElementById('homeBlockEchart'))
+        blockCharts.setOption(this.blockOption)
+        let lineCharts=echart.init(document.getElementById('homeLineEchart'))
+        lineCharts.setOption(this.lineOption)
     }
 }
 </script>
 <style lang="less">
-
+    .home-pages{
+        width:100%;
+        margin-top:20px;
+        .chart-wrap{
+            border:1px solid #ddd;
+            height:400px;
+        }
+    }
 </style>
