@@ -2,6 +2,7 @@
     <div class="aside-pages">
         <el-menu :default-active="$route.path" 
                  :router="true"
+                 :unique-opened="true"
                  class="el-menu-demo"
                  text-color="#fff"
                  active-text-color="#ffd04b"
@@ -10,17 +11,16 @@
             <el-menu-item index="/home">
                 <span class="iconfont icon-all"></span><span>首页</span>
             </el-menu-item>
-            <el-submenu index="">
-                <template slot="title"><span class="iconfont icon-form"></span><span>表格</span></template>
-                <el-menu-item index="/table">选项1</el-menu-item>
-                <el-menu-item index="">选项2</el-menu-item>
-                <el-menu-item index="">选项3</el-menu-item>
-            </el-submenu>
-            <el-submenu index="">
-                <template slot="title"><span class="iconfont icon-edit"></span><span>我的工作台</span></template>
-                <el-menu-item index="">选项1</el-menu-item>
-                <el-menu-item index="">选项2</el-menu-item>
-                <el-menu-item index="">选项3</el-menu-item>
+            <el-submenu v-for="(item,index) in tabList" 
+                        :key="index" 
+                        :index="item.path">
+                <template slot="title">
+                    <span :class="'iconfont '+ item.icon"></span>
+                    <span>{{ item.label }}</span>
+                </template>
+                <el-menu-item v-for="(items,indexs) in item.options" 
+                              :key="indexs" 
+                              :index="items.path">{{ items.label }}</el-menu-item>
             </el-submenu>
         </el-menu>
     </div>
@@ -31,13 +31,18 @@ import Vue from 'vue';
 export default{
     data(){
         return {
-
+            tabList:[
+                {label:'用户',path:'/userInfo',icon:'icon-favorite',options:[{label:'用户信息',path:'/userInfo'}]},
+                {label:'审核',path:'/audit',icon:'icon-edit',options:[{label:'用户审核',path:'/audit'}]},
+                {label:'财务',path:'/finance',icon:'icon-gifts',options:[{label:'财务信息',path:'/finance'}]},
+                {label:'系统',path:'/system',icon:'icon-set',options:[{label:'系统设置',path:'/system'}]}
+            ]
         }
     },
     methods:{
         handleSelect(val){
-            console.log(val)
-        }
+            
+        },
     }
 }    
 </script>
