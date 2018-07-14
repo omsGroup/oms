@@ -131,7 +131,6 @@ export default {
         color:#212d45;
         font-size: 22px;
         padding-bottom: 8px;
-        text-align: left;
         border-bottom: 1px solid #afb9ca;
         margin-bottom:20px;
     }
@@ -143,10 +142,8 @@ export default {
         font-size: 16px;
         padding-left:16px;
         margin-bottom:20px;
-        text-align: left;
     }
     .button-group{
-        text-align: left;
         padding-bottom:15px;
         border-bottom: 1px solid #f0f2f7;
     }

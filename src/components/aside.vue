@@ -7,9 +7,21 @@
                  active-text-color="#ffd04b"
                  background-color="#324057" 
                  @select="handleSelect">
-            <el-menu-item index="/home">首页</el-menu-item>
-            <el-menu-item index="/table">表格</el-menu-item>
-            <el-menu-item index="3">图表</el-menu-item>
+            <el-menu-item index="/home">
+                <span class="iconfont icon-all"></span><span>首页</span>
+            </el-menu-item>
+            <el-submenu index="">
+                <template slot="title"><span class="iconfont icon-form"></span><span>表格</span></template>
+                <el-menu-item index="/table">选项1</el-menu-item>
+                <el-menu-item index="">选项2</el-menu-item>
+                <el-menu-item index="">选项3</el-menu-item>
+            </el-submenu>
+            <el-submenu index="">
+                <template slot="title"><span class="iconfont icon-edit"></span><span>我的工作台</span></template>
+                <el-menu-item index="">选项1</el-menu-item>
+                <el-menu-item index="">选项2</el-menu-item>
+                <el-menu-item index="">选项3</el-menu-item>
+            </el-submenu>
         </el-menu>
     </div>
 </template>
@@ -33,6 +45,9 @@ export default{
     .aside-pages{
         width: 100%;
         height: 100%;
+        .iconfont{
+            margin-right:10px;
+        }
     }
 </style>
 
