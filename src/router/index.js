@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import login from '@/components/login'
+const recover = r => require.ensure([], () => r(require('@/pages/recover/recover')), 'recover');
 const layout = r => require.ensure([], () => r(require('@/components/layout')), 'layout');
 const home = r => require.ensure([], () => r(require('@/pages/home/home')), 'home');
 const table = r => require.ensure([], () => r(require('@/pages/table/table')), 'table');
@@ -26,5 +27,9 @@ export default new Router({
             name: 'table',
             component: table
         }]
+    }, {
+        path: '/recover',
+        name: 'recover',
+        component: recover
     }]
 })
