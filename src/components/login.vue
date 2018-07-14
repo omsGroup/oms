@@ -26,7 +26,6 @@
                     </el-col>
                     <el-col :span="24">
                         <el-form-item label="验证码:"
-                                      label-width="80px"
                                       prop="captcha">
                             <el-input v-model="form.captcha"></el-input>
                         </el-form-item>
