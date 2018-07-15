@@ -67,6 +67,8 @@
                             <el-option value="1">1</el-option>
                             <el-option value="2">2</el-option>
                         </el-select>
+                        <el-input v-if="item.type === 'input'"/>
+                        <el-checkbox v-if="item.type === 'checkbox'"></el-checkbox>
                         <el-input v-else-if="item.type === 'input'"/>
                         <span v-else>{{ scope.row[item.prop] }}</span>
                     </template>
