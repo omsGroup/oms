@@ -61,6 +61,7 @@
                             <el-option value="2">2</el-option>
                         </el-select>
                         <el-input v-if="item.type === 'input'"/>
+                        <el-checkbox v-if="item.type === 'checkbox'"></el-checkbox>
                     </template>
                 </el-table-column>
             </el-table>
