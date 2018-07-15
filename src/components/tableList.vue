@@ -58,7 +58,7 @@
                                  :min-width="item.minWidth">
                     <template slot-scope="scope">
                         <span v-if="item.filter">
-                            {{ scope.row[item.prop] | sex }}
+                            {{ Vue.filter(item.filter)(scope.row[item.prop]) }}
                         </span>
                         <img v-else-if="item.type === 'img'"
                              style="width:100px;height:50px;"
@@ -77,6 +77,7 @@
                                  label="操作">
                     <template slot-scope="scope">
                         <el-button v-for="item in tableOption"
+                                   v-if="item.render?item.render(scope.row):''"
                                    :key="item.label"
                                    :type="item.type?item.type:'primary'"
                                    :span="item.span?item.span:6" 
@@ -150,6 +151,7 @@ export default {
     },
     data() {
         return {
+            Vue,
             searchForm: this.form
         }
     },

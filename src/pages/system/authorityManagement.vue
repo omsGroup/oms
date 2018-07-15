@@ -5,12 +5,12 @@
               :form="form"
               :table-selection="true"
               :data="[{userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:'2018-06-18'},
-                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:'2018-06-18'},
-                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:'2018-06-18'},
-                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:'2018-06-18'},
-                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:'2018-06-18'},
-                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:'2018-06-18'},
-                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:'2018-06-18'},
+                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:0,registTime:'2018-06-18'},
+                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:0,registTime:'2018-06-18'},
+                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:'2018-06-18'},
+                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:2,registTime:'2018-06-18'},
+                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:'2018-06-18'},
+                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:2,registTime:'2018-06-18'},
                       {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:'2018-06-18'},]"
               :search-param="[{label:'用户ID',prop:'userId'},
                               {label:'身份',prop:'userIdentity',type:'select'}]" 
@@ -23,12 +23,11 @@
                             {label:'手机号',prop:'mobile',minWidth:120},
                             {label:'住址',prop:'address',minWidth:180},
                             {label:'身份证号',prop:'idCard',minWidth:150},
-                            {label:'账号类型',prop:'accountType',minWidth:110},
+                            {label:'账号类型',prop:'accountType',minWidth:110,filter:'accountType'},
                             {label:'注册时间',prop:'registTime',minWidth:130}]" 
-              :table-option="[{label:'设置管理员',methods:'setManage',span:6},
-                              {label:'设置超级管理员',methods:'setSuperManage',span:6},
-                              {label:'取消管理员',methods:'dropManage',type:'danger',span:6}]" 
-              :table-option-width="350"/>
+              :table-option="[{label:'设置管理员',methods:'setManage',span:5,render:(row)=>{return row.accountType===0?true:false}},
+                              {label:'取消管理员',methods:'dropManage',type:'danger',span:5,render:(row)=>{return row.accountType===1?false:true}}]" 
+              :table-option-width="215"/>
     </div>
 </template>
 <script>
