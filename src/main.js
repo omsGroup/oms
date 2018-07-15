@@ -7,9 +7,14 @@ import './assets/common.less'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/icon/iconfont.css'
+import * as filters from  './plugins/filters'
 
-Vue.use(ElementUI)
-Vue.config.productionTip = false
+Object.keys(filters).forEach(key=>{
+    Vue.filter(key,filters[key])
+});
+
+Vue.use(ElementUI);
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({

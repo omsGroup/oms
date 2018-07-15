@@ -1,7 +1,7 @@
 <template>
     <div class="table-list-pages">
-        <div class="list-title">搜索及数据展示页</div>
-        <div class="list-search-form">搜索条件</div>
+        <div class="list-title">{{ pageTitle }}</div>
+        <div class="list-search-form">{{ searchTitle }}</div>
         <el-form v-if="searchParam"
                  label-width="90px">
             <el-row>
@@ -46,26 +46,46 @@
                       :stripe="true"
                       style="width:100%"
                       size="mini" 
-                      border >
+                      border 
+                      @selection-change="handleSelectionChange">
+                <el-table-column v-if="tableSelection" 
+                                 type="selection" 
+                                 width="55"></el-table-column>
                 <el-table-column v-for="(item,index) in tableType" 
                                  :key="index"
                                  :prop="item.prop"
-                                 :label="item.label">
+                                 :label="item.label" 
+                                 :min-width="item.minWidth">
                     <template slot-scope="scope">
-                        <span v-if="!item.type">{{ scope.row[item.prop] }}</span>
-                        <img v-if="item.type === 'img'" 
+                        <span v-if="item.filter">
+                            {{ scope.row[item.prop] | sex }}
+                        </span>
+                        <img v-else-if="item.type === 'img'"
                              style="width:100px;height:50px;"
                              src="../assets/images/056f814a17e86151a306028bee30add4.png">
                         <el-select v-if="item.type === 'select'">
                             <el-option value="1">1</el-option>
                             <el-option value="2">2</el-option>
                         </el-select>
-                        <el-input v-if="item.type === 'input'"/>
+                        <el-input v-else-if="item.type === 'input'"/>
+                        <span v-else>{{ scope.row[item.prop] }}</span>
+                    </template>
+                </el-table-column>
+                <el-table-column v-if="tableOption"
+                                 :width="tableOptionWidth"
+                                 fixed="right" 
+                                 label="操作">
+                    <template slot-scope="scope">
+                        <el-button v-for="item in tableOption"
+                                   :key="item.label"
+                                   :type="item.type?item.type:'primary'"
+                                   :span="item.span?item.span:6" 
+                                   size="mini">{{ item.label }}</el-button>
                     </template>
                 </el-table-column>
             </el-table>
         </div>
-        <div class="list-pagination">
+        <div class="list-pagination flex-center-center">
             <el-pagination
                 :total="totalCount"
                 :current-page="1"
@@ -79,8 +99,14 @@
     </div>
 </template>
 <script>
+import Vue from 'vue'
+
 export default {
     props: {
+        tableSelection:{
+            type:Boolean,
+            default:()=>false
+        },
         form:{
             type:Object,
             default:()=>{}
@@ -104,6 +130,22 @@ export default {
         totalCount:{
             type:Number,
             default:()=>0
+        },
+        pageTitle:{
+            type:String,
+            default:()=>''
+        },
+        searchTitle:{
+            type:String,
+            default:()=>''
+        },
+        tableOption:{
+            type:Array,
+            default:()=>[]
+        },
+        tableOptionWidth:{
+            type:Number,
+            default:()=>0
         }
     },
     data() {
@@ -121,13 +163,9 @@ export default {
         handleCurrentChange(val){
             console.log(val)
         },
-        rowStyle({row, rowIndex}){
-            if(rowIndex%2===0){
-                return 'background:rgba(103,194,58,.2)'
-            }else{
-                return ''
-            }
-        }
+        handleSelectionChange(val){
+            console.log(val)
+        },
     }
 }
 

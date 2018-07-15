@@ -8,6 +8,8 @@ const userInfo = r => require.ensure([], () => r(require('@/pages/user/userInfo'
 const userAudit = r => require.ensure([], () => r(require('@/pages/audit/userAudit')), 'userAudit');
 const financeInfo = r => require.ensure([], () => r(require('@/pages/finance/financeInfo')), 'financeInfo');
 const systemSetting = r => require.ensure([], () => r(require('@/pages/system/systemSetting')), 'systemSetting');
+const authorityManagement = r => require.ensure([], () => r(require('@/pages/system/authorityManagement')), 'authorityManagement');
+
 
 Vue.use(Router);
 
@@ -40,6 +42,10 @@ export default new Router({
             path:'/systemSetting',
             name:'systemSetting',
             component:systemSetting
+        },{
+            path:'/authorityManagement',
+            name:'authorityManagement',
+            component:authorityManagement
         }]
     }, {
         path: '/recover',
