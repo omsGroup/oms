@@ -4,14 +4,14 @@
               :search-title="'权限管理搜索条件'"
               :form="form"
               :table-selection="true"
-              :data="[{userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:1531660689000},
-                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:0,registTime:1531660689000},
-                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:0,registTime:1531660689000},
-                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:1531660689000},
-                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:2,registTime:1531660689000},
-                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:1531660689000},
-                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:2,registTime:1531660689000},
-                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142119',accountType:1,registTime:1531660689000},]"
+              :data="[{userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142229',accountType:1,registTime:1531660689000},
+                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142229',accountType:0,registTime:1531660689000},
+                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142229',accountType:0,registTime:1531660689000},
+                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142229',accountType:1,registTime:1531660689000},
+                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142229',accountType:2,registTime:1531660689000},
+                      {userId:'138',realName:'BWW',age:'29',sex:0,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142229',accountType:1,registTime:1531660689000},
+                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142229',accountType:2,registTime:1531660689000},
+                      {userId:'138',realName:'BWW',age:'29',sex:1,mobile:'13823185776',address:'上海宝山艺康苑88弄99号601',idCard:'320381198902142229',accountType:1,registTime:1531660689000},]"
               :search-param="[{label:'用户ID',prop:'userId'},
                               {label:'身份',prop:'userIdentity',type:'select'}]" 
               :button-group="[{label:'搜索',methods:'search'},
@@ -27,7 +27,9 @@
                             {label:'注册时间',prop:'registTime',minWidth:150,filter:'timestampTransform'}]" 
               :table-option="[{label:'设置管理员',methods:'setManage',span:5,render:(row)=>{return row.accountType===0?true:false}},
                               {label:'取消管理员',methods:'dropManage',type:'danger',span:5,render:(row)=>{return row.accountType===1?true:false}}]" 
-              :table-option-width="115"/>
+              :table-option-width="115" 
+              @handleTableButton="handleTableButton" 
+              @handleButton="handleButton"/>
     </div>
 </template>
 <script>
@@ -41,6 +43,14 @@ export default{
             form:{
                 
             }
+        }
+    },
+    methods:{
+        handleTableButton(val){
+            console.log(val)
+        },
+        handleButton(val){
+            console.log(val)
         }
     }
 }

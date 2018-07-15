@@ -37,7 +37,8 @@
             <el-button v-for="(item,index) in buttonGroup" 
                        :key="index" 
                        :type="item.type?item.type:'primary'"
-                       size="mini">{{ item.label }}</el-button>
+                       size="mini" 
+                       @click="handleButton(item.methods)">{{ item.label }}</el-button>
         </div>
         <div v-if="tableType"
              class="table-body">
@@ -81,7 +82,8 @@
                                    :key="item.label"
                                    :type="item.type?item.type:'primary'"
                                    :span="item.span?item.span:6" 
-                                   size="mini">{{ item.label }}</el-button>
+                                   size="mini" 
+                                   @click="handleTableButton(item.methods)">{{ item.label }}</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -157,6 +159,12 @@ export default {
         }
     },
     methods:{
+        handleButton(val){
+            this.$emit('handleButton',val)
+        },
+        handleTableButton(val){
+            this.$emit('handleTableButton',val)
+        },
         searchChange(val){
             console.log(this.searchForm)
         },

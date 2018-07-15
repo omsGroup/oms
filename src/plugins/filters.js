@@ -6,10 +6,8 @@ export function accountType(val){
 }
 export function timestampTransform(val){
     let date=new Date(val);
-    let month=date.getMonth()+1<10?'0'+(date.getMonth()+1):date.getMonth()+1;
-    let day=date.getDate()<10?'0'+date.getDate():date.getDate();
-    let hour=date.getHours()<10?'0'+date.getHours():date.getHours();
-    let minute=date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes();
-    let second=date.getSeconds()<10?'0'+date.getSeconds():date.getSeconds();
-    return date.getFullYear()+'-'+month+'-'+day+' '+hour+':'+minute+':'+second
+    return date.getFullYear()+'-'+checkTen(date.getMonth()+1)+'-'+checkTen(date.getDate())+' '+checkTen(date.getHours())+':'+checkTen(date.getMinutes())+':'+checkTen(date.getSeconds())
+}
+function checkTen(val){
+    return val<10?'0'+val:val
 }
