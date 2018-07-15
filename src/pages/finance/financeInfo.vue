@@ -12,9 +12,7 @@
                                    {label:'订单号',prop:'orderID'},
                                    {label:'交易类型',prop:'type',type:'select',options:[{value:1,name:'全部'}]},
                                    {label:'货币单位',prop:'unit',type:'select',options:[{value:1,name:'全部'}]}]"
-                   :button-group="[{label:'查询',methods:'search'},
-                                   {label:'重置',methods:'reset'},
-                                   {label:'下载报表',methods:'download'}]"
+                   :button-group="buttons"
                    :table-type="[{label:'订单号',prop:'orderID',minWidth:80},
                                  {label:'昵称',prop:'nickname',minWidth:80},
                                  { label:'ID',prop:'id',minWidth:80},
@@ -42,7 +40,12 @@ export default{
                 orderID:'',
                 type:'',
                 unit:''
-            }
+            },
+            buttons:[
+                {label:'查询',methods:'search'},
+                {label:'重置',methods:'reset'},
+                {label:'下载报表',methods:'download'}
+            ]
         }
     }
 }
