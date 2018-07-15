@@ -121,6 +121,13 @@ export default {
         },
         handleCurrentChange(val){
             console.log(val)
+        },
+        rowStyle({row, rowIndex}){
+            if(rowIndex%2===0){
+                return 'background:rgba(103,194,58,.2)'
+            }else{
+                return ''
+            }
         }
     }
 }

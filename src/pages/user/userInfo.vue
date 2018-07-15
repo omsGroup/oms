@@ -3,6 +3,7 @@
         <tablelist ref="tableList"
                    :form="form"
                    :data="[{rank:1,realName:'奇侠绝情剑',mobile:'13823185776',bgPic:'../assets/images/056f814a17e86151a306028bee30add4.png',status:'正常',chargeTime:'2018-07-12'},
+                           {rank:1,realName:'奇侠绝情剑',mobile:'13823185776',bgPic:'../assets/images/timg.jpeg',status:'正常',chargeTime:'2018-07-12'},
                            {rank:1,realName:'奇侠绝情剑',mobile:'13823185776',bgPic:'../assets/images/timg.jpeg',status:'正常',chargeTime:'2018-07-12'}]"
                    :search-param="[{label:'用户ID',prop:'id'},
                                    {label:'手机号',prop:'mobile'},
