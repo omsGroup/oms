@@ -13,15 +13,17 @@
                                    {label:'交易类型',prop:'type',type:'select',options:[{value:1,name:'全部'}]},
                                    {label:'货币单位',prop:'unit',type:'select',options:[{value:1,name:'全部'}]}]"
                    :button-group="buttons"
-                   :table-type="[{label:'订单号',prop:'orderID',minWidth:80},
+                   :table-type="[{label:'订单号',prop:'orderID',minWidth:120},
                                  {label:'昵称',prop:'nickname',minWidth:80},
                                  { label:'ID',prop:'id',minWidth:80},
                                  {label:'姓名',prop:'name',minWidth:80},
-                                 {label:'手机',prop:'phone',minWidth:80},
+                                 {label:'手机',prop:'phone',minWidth:120},
                                  {label:'交易类型',prop:'type',minWidth:80},
                                  {label:'账户变动',prop:'account',minWidth:80},
                                  {label:'货币单位',prop:'unit',minWidth:80},
-                                 {label:'交易时间',prop:'time',minWidth:80}]"/> 
+                                 {label:'交易时间',prop:'time',minWidth:80}]" 
+                   @getData="getData" 
+                   @handleButton="handleButton"/> 
     </div>
 </template>
 <script>
@@ -46,6 +48,14 @@ export default{
                 {label:'重置',methods:'reset'},
                 {label:'下载报表',methods:'download'}
             ]
+        }
+    },
+    methods:{
+        getData(){
+            this.$message.success('get data')
+        },
+        handleButton(){
+            this.$message.success('handle button')
         }
     }
 }

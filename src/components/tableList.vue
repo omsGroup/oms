@@ -78,7 +78,7 @@
                                  label="操作">
                     <template slot-scope="scope">
                         <el-button v-for="item in tableOption"
-                                   v-if="item.render?item.render(scope.row):''"
+                                   v-if="item.render?item.render(scope.row):true"
                                    :key="item.label"
                                    :type="item.type?item.type:'primary'"
                                    :span="item.span?item.span:6" 
@@ -160,7 +160,11 @@ export default {
     },
     methods:{
         handleButton(val){
-            this.$emit('handleButton',val)
+            if(val === 'search'){
+                this.$emit('getData')
+            }else{
+                this.$emit('handleButton',val)
+            }
         },
         handleTableButton(val){
             this.$emit('handleTableButton',val)
@@ -169,13 +173,13 @@ export default {
             console.log(this.searchForm)
         },
         handleSizeChange(val){
-            console.log(val)
+            this.$emit('getData')
         },
         handleCurrentChange(val){
-            console.log(val)
+            this.$emit('getData')
         },
         handleSelectionChange(val){
-            console.log(val)
+            this.$emit('handleSelectionChange',val)
         },
     }
 }

@@ -14,12 +14,12 @@
                                    {label:'用户状态',prop:'userStatus',type:'select',options:[{value:1,name:'正常'},{value:2,name:'禁言'}]},
                                    {label:'查询日期',prop:'pickTime',type:'dataPicker'}]"
                    :button-group="[{label:'搜索',methods:'search'},{label:'重置',methods:'reset'}]"
-                   :table-type="[{label:'排名',prop:'rank'},
-                                 {label:'姓名',prop:'realName'},
-                                 {label:'手机号',prop:'mobile'},
-                                 {label:'背景图',prop:'bgPic',type:'img'},
-                                 {label:'状态',prop:'status'},
-                                 {label:'充值时间',prop:'chargeTime'}]"/>
+                   :table-type="[{label:'排名',prop:'rank',minWidth:70},
+                                 {label:'姓名',prop:'realName',minWidth:70},
+                                 {label:'手机号',prop:'mobile',minWidth:70},
+                                 {label:'背景图',prop:'bgPic',type:'img',minWidth:70},
+                                 {label:'状态',prop:'status',minWidth:70},
+                                 {label:'充值时间',prop:'chargeTime',minWidth:70}]"/>
     </div>
 </template>
 <script>
