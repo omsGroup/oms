@@ -2,9 +2,12 @@
     <div class="user-info-pages">
         <tablelist ref="tableList"
                    :form="form"
+                   :page-title="'用户信息'"
+                   :search-title="'用户信息搜索条件'"
+                   :total-count="3"
                    :data="[{rank:1,realName:'奇侠绝情剑',mobile:'13823185776',bgPic:'../assets/images/056f814a17e86151a306028bee30add4.png',status:'正常',chargeTime:'2018-07-12'},
-                           {rank:1,realName:'奇侠绝情剑',mobile:'13823185776',bgPic:'../assets/images/timg.jpeg',status:'正常',chargeTime:'2018-07-12'},
-                           {rank:1,realName:'奇侠绝情剑',mobile:'13823185776',bgPic:'../assets/images/timg.jpeg',status:'正常',chargeTime:'2018-07-12'}]"
+                           {rank:2,realName:'奇侠绝情剑',mobile:'13823185776',bgPic:'../assets/images/timg.jpeg',status:'正常',chargeTime:'2018-07-12'},
+                           {rank:3,realName:'奇侠绝情剑',mobile:'13823185776',bgPic:'../assets/images/timg.jpeg',status:'正常',chargeTime:'2018-07-12'}]"
                    :search-param="[{label:'用户ID',prop:'id'},
                                    {label:'手机号',prop:'mobile'},
                                    {label:'真实姓名',prop:'realName'},
