@@ -63,12 +63,10 @@
                         <img v-else-if="item.type === 'img'"
                              style="width:100px;height:50px;"
                              src="../assets/images/056f814a17e86151a306028bee30add4.png">
-                        <el-select v-if="item.type === 'select'">
+                        <el-select v-else-if="item.type === 'select'">
                             <el-option value="1">1</el-option>
                             <el-option value="2">2</el-option>
                         </el-select>
-                        <el-input v-if="item.type === 'input'"/>
-                        <el-checkbox v-if="item.type === 'checkbox'"></el-checkbox>
                         <el-input v-else-if="item.type === 'input'"/>
                         <span v-else>{{ scope.row[item.prop] }}</span>
                     </template>
