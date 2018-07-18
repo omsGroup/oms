@@ -11,9 +11,17 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : require('../config/prod.env')
+const env=null;
+if(process.env.NODE_ENV === 'dev'){
+    this.env=require('../config/dev.env')
+}else if(process.env.NODE_ENV === 'develop'){
+    this.env=require('../config/develop.env')
+}else if (process.env.NODE_ENV === 'test'){
+    this.env=require('../config/test.env')
+}else{
+    this.env=require('../config/prod.env')
+}
+
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {

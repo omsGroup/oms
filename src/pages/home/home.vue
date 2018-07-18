@@ -15,6 +15,8 @@
 </template>
 <script>
 import echart from 'echarts'
+import Vue from 'vue'
+
 export default{
     data(){
         return{
@@ -68,6 +70,17 @@ export default{
         blockCharts.setOption(this.blockOption)
         let lineCharts=echart.init(document.getElementById('homeLineEchart'))
         lineCharts.setOption(this.lineOption)
+        this.getList();
+    },
+    methods:{
+        getList(){
+            let param={pageNum:1,pageSize:10,rankType:"GOLD_WEEK"};
+            this.$axios.post('http://dev.api.qiuxiaomi.cn/ranking/live_ranking_list',param).then((res)=>{
+                console.log(res)
+            }).catch((res)=>{
+                console.log(res,'error')
+            })
+        }
     }
 }
 </script>

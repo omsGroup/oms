@@ -4,7 +4,8 @@
                    :page-title="'财务信息'"
                    :search-title="'财务信息搜索条件'"
                    :form="form"
-                   :data="[{orderID:'20180715222',nickname:'奥特曼',id:'13338',name:'张张',phone:'15263521452',type:'送礼',account:'-88',unit:'迷豆',time:'2018-07-15'},{orderID:'20180715233',nickname:'小怪兽',id:'13338',name:'王王',phone:'15263521452',type:'收礼',account:'88',unit:'球币',time:'2018-07-15'}]"
+                   :data="[{orderID:'20180715222',nickname:'奥特曼',id:'13338',name:'张张',phone:'15263521452',type:'送礼',account:'-88',unit:'迷豆',time:'2018-07-15'},
+                           {orderID:'20180715233',nickname:'小怪兽',id:'13338',name:'王王',phone:'15263521452',type:'收礼',account:'88',unit:'球币',time:'2018-07-15'}]"
                    :search-param="[{label:'昵称',prop:'nickname'},
                                    {label:'手机号码',prop:'phone'},
                                    {label:'真实姓名',prop:'name'},
