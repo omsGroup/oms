@@ -9,14 +9,14 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="用户名:"
-                                      prop="userName">
-                            <el-input v-model="form.userName"></el-input>
+                                      prop="username">
+                            <el-input v-model="form.username"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="24">
                         <el-form-item label="密码:"
-                                      prop="pass">
-                            <el-input v-model="form.pass"
+                                      prop="password">
+                            <el-input v-model="form.password"
                                       type="password">
                             </el-input>
                         </el-form-item>
@@ -50,185 +50,36 @@
 </template>
 <script>
 import echart from 'echarts'
+import Vue from 'vue'
 export default {
     data() {
         let confirmPassword = (rule, value, callback) => {
             if (value === "") {
                 callback(new Error("请输入密码"))
-            } else if (value !== this.form.pass) {
+            } else if (value !== this.form.password) {
                 callback(new Error("两次输入密码不同"))
             } else {
                 callback()
             }
         }
         let confirmCaptcha = (rule, value, callback) => {
-            let reg = /^\d{4}\b/
+            let reg = /^\d{3}\b/
             if (value === "") {
                 callback(new Error("请输入验证码"))
-            } else if (value.length !== 4 || !reg.test(value)) {
-                callback(new Error("请输入四位数字验证码"))
+            } else if (value.length !== 3 || !reg.test(value)) {
+                callback(new Error("请输入验证码"))
             } else {
                 callback()
             }
         }
-
-        let item1 = {
-            color: '#F54F4A'
-        };
-        let item2 = {
-            color: '#FF8C75'
-        };
-        let item3 = {
-            color: '#FFB499'
-        };
-
-        let data = [{
-            children: [{
-                value: 5,
-                children: [{
-                    value: 1,
-                    itemStyle: item1
-                }, {
-                    value: 2,
-                    children: [{
-                        value: 1,
-                        itemStyle: item2
-                    }]
-                }, {
-                    children: [{
-                        value: 1
-                    }]
-                }],
-                itemStyle: item1
-            }, {
-                value: 10,
-                children: [{
-                    value: 6,
-                    children: [{
-                        value: 1,
-                        itemStyle: item1
-                    }, {
-                        value: 1
-                    }, {
-                        value: 1,
-                        itemStyle: item2
-                    }, {
-                        value: 1
-                    }],
-                    itemStyle: item3
-                }, {
-                    value: 2,
-                    children: [{
-                        value: 1
-                    }],
-                    itemStyle: item3
-                }, {
-                    children: [{
-                        value: 1,
-                        itemStyle: item2
-                    }]
-                }],
-                itemStyle: item1
-            }],
-            itemStyle: item1
-        }, {
-            value: 9,
-            children: [{
-                value: 4,
-                children: [{
-                    value: 2,
-                    itemStyle: item2
-                }, {
-                    children: [{
-                        value: 1,
-                        itemStyle: item1
-                    }]
-                }],
-                itemStyle: item1
-            }, {
-                children: [{
-                    value: 3,
-                    children: [{
-                        value: 1
-                    }, {
-                        value: 1,
-                        itemStyle: item2
-                    }]
-                }],
-                itemStyle: item3
-            }],
-            itemStyle: item2
-        }, {
-            value: 7,
-            children: [{
-                children: [{
-                    value: 1,
-                    itemStyle: item3
-                }, {
-                    value: 3,
-                    children: [{
-                        value: 1,
-                        itemStyle: item2
-                    }, {
-                        value: 1
-                    }],
-                    itemStyle: item2
-                }, {
-                    value: 2,
-                    children: [{
-                        value: 1
-                    }, {
-                        value: 1,
-                        itemStyle: item1
-                    }],
-                    itemStyle: item1
-                }],
-                itemStyle: item3
-            }],
-            itemStyle: item1
-        }, {
-            children: [{
-                value: 6,
-                children: [{
-                    value: 1,
-                    itemStyle: item2
-                }, {
-                    value: 2,
-                    children: [{
-                        value: 2,
-                        itemStyle: item2
-                    }],
-                    itemStyle: item1
-                }, {
-                    value: 1,
-                    itemStyle: item3
-                }],
-                itemStyle: item3
-            }, {
-                value: 3,
-                children: [{
-                    value: 1,
-                }, {
-                    children: [{
-                        value: 1,
-                        itemStyle: item2
-                    }]
-                }, {
-                    value: 1
-                }],
-                itemStyle: item3
-            }],
-            itemStyle: item1
-        }];
-
         return {
             admin:{
-                userName: "root",
-                pass: "root123"
+                username: "root",
+                password: "root123"
             },
             form: {
-                userName: "",
-                pass: "",
+                username: "",
+                password: "",
                 captcha: "",
                 confirmPass: ""
             },
@@ -240,8 +91,7 @@ export default {
                 }],
                 pass: [{
                     required: true,
-                    pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/,
-                    message: "请输入6-12位数字+字母验证码",
+                    message: "请输入证码",
                     trigger:'blur'
                 }],
                 confirmPass: [{
@@ -253,40 +103,21 @@ export default {
                     trigger: ["blur", "change"]
                 }]
             },
-            option : {
-                series: {
-                    radius: ['15%', '80%'],
-                    type: 'sunburst',
-                    sort: null,
-                    highlightPolicy: 'ancestor',
-                    data: data,
-                    label: {
-                        rotate: 'radial'
-                    },
-                    levels: [],
-                    itemStyle: {
-                        color: '#ddd',
-                        borderWidth: 2
-                    }
-                }
-            }
         }
     },
     mounted() {
-        console.log(123);
-        let myCharts=echart.init(document.getElementById('backEchart'));
-        myCharts.setOption(this.option)
+        
     },
     methods: {
         submitLogin() {
             this.$refs.form.validate((valid) => {
                 if (valid) {
-                    if(this.form.userName !== this.admin.userName || this.form.pass !== this.admin.pass){
-                        this.$message.error("用户名或者密码错误");
-                    }else{
+                    this.$axios.post('/login',this.form).then((res)=>{
                         this.$message.success("登录成功");
                         this.$router.replace('/layout');
-                    }
+                    }).catch((error)=>{
+                        this.$message.error('登录失败')
+                    })
                 }
             })
         },

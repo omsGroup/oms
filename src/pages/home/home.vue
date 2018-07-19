@@ -71,6 +71,7 @@ export default{
         let lineCharts=echart.init(document.getElementById('homeLineEchart'))
         lineCharts.setOption(this.lineOption)
         this.getList();
+        console.log(Vue)
     },
     methods:{
         getList(){

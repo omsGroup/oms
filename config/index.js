@@ -14,7 +14,7 @@ module.exports = {
         '/api':{
             target:'http://dev.oms-api.qiuxiaomi.cn',
             changeOrigin:true,
-            '^/api':'/'
+            '^/api':'/v1'
         }
     },
     
