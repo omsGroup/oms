@@ -4,9 +4,18 @@ import qs from 'qs'
 // axios 配置
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
-axios.defaults.baseURL = 'http://dev.api.qiuxiaomi.cn/ranking/live_ranking_lis';
-
-let instance=axios.create({
+axios.defaults.baseURL = `http://${process.env.NODE_ENV}.api.qiuxiaomi.cn`;
+// // 或者
+// switch(process.env.NODE_ENV) {
+//     case 'dev':
+//         axios.defaults.baseURL = 'http://dev.api.qiuxiaomi.cn';
+//         break;
+//     case 'production':
+//         axios.defaults.baseURL = 'http://[pro].api.qiuxiaomi.cn';
+//         break;
+// }
+// axios.defaults.baseURL = 'http://production.api.qiuxiaomi.cn/ranking/live_ranking_lis';
+let instance = axios.create({
     headers:{
         
     },
@@ -51,7 +60,5 @@ export function fetch(url, params) {
             })
     })
 }
-export default {
-    instance
-}
+export default axios
 
