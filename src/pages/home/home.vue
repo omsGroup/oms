@@ -76,7 +76,7 @@ export default{
     methods:{
         getList(){
             let param={pageNum:1,pageSize:10,rankType:"GOLD_WEEK"};
-            this.$axios.post('http://dev.api.qiuxiaomi.cn/ranking/live_ranking_list',param).then((res)=>{
+            this.$axios.post('/ranking/live_ranking_list',param).then((res)=>{
                 console.log(res)
             }).catch((res)=>{
                 console.log(res,'error')
