@@ -11,8 +11,7 @@
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
     "test": "set NODE_ENV=test && node build/prod.js",
-    "prod": "set NODE_ENV=prod && node build/prod.js",
-    "develop": "node build/develop.js"
+    "prod": "set NODE_ENV=prod && node build/prod.js"
   },
   "dependencies": {
     "echarts": "^4.1.0",

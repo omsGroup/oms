@@ -4,7 +4,7 @@ import qs from 'qs'
 // axios 配置
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
-axios.defaults.baseURL = `http://${process.env.NODE_ENV}.api.qiuxiaomi.cn`;
+axios.defaults.baseURL = `http://${process.env.NODE_ENV}.oms-api.qiuxiaomi.cn`;
 // // 或者
 // switch(process.env.NODE_ENV) {
 //     case 'dev':

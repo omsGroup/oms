@@ -112,7 +112,7 @@ export default {
         submitLogin() {
             this.$refs.form.validate((valid) => {
                 if (valid) {
-                    this.$axios.post('/login',this.form).then((res)=>{
+                    this.$axios.post('/v1/login',this.form).then((res)=>{
                         this.$message.success("登录成功");
                         this.$router.replace('/layout');
                     }).catch((error)=>{
