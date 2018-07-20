@@ -38,8 +38,14 @@ instance.interceptors.request.use((config) => {
 
 //返回状态判断
 instance.interceptors.response.use((res) =>{
-    if(!res.data.success){
-        return Promise.reject(res);
+    if(res.status === 200){
+        if(res.data.errorCode===1){
+            return Promise.resolve(res.data)
+        }else{
+            this.$message.error(res.data.msg)
+        }
+    }else if(res.status === 500){
+        this.$message.error('服务器异常')
     }
     return res;
 }, (error) => {
@@ -49,6 +55,7 @@ instance.interceptors.response.use((res) =>{
 
 export function fetch(url, params) {
     return new Promise((resolve, reject) => {
+        axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
         instance.post(url, params)
             .then(response => {
                 resolve(response.data);
@@ -59,6 +66,42 @@ export function fetch(url, params) {
                 reject(error)
             })
     })
+};
+export function postFormat(url,params){
+    return new Promise((resolve,reject)=>{
+        axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+        instance.post(url,params)
+            .then((response) => {
+                resolve(response);
+            }).catch((error) => {
+                console.log(error,'error')
+                reject(error)
+            })
+    })
+};
+export function formData(url,param={}){
+    return instance.post(url,param,{
+        headers: {
+            'enctype': 'multipart/form-data',
+            'Cache-Control': 'no-store',
+            'Pragma': 'no-cache'
+        },
+        data: param || {},
+        transformRequest:[function() {
+            let fd = new FormData();
+            for (let i in param) {
+                if (param.hasOwnProperty(i)) {
+                    fd.append(i, param[i]);
+                }
+            }
+            return fd;
+        }]
+    })
 }
-export default axios
+export default {
+    formData,
+    fetch,
+    postFormat,
+    instance
+}
 
