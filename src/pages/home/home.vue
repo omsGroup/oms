@@ -66,21 +66,15 @@ export default{
         }
     },
     mounted(){
-        let blockCharts=echart.init(document.getElementById('homeBlockEchart'))
-        blockCharts.setOption(this.blockOption)
-        let lineCharts=echart.init(document.getElementById('homeLineEchart'))
-        lineCharts.setOption(this.lineOption)
+        let blockCharts=echart.init(document.getElementById('homeBlockEchart'));
+        blockCharts.setOption(this.blockOption);
+        let lineCharts=echart.init(document.getElementById('homeLineEchart'));
+        lineCharts.setOption(this.lineOption);
         this.getList();
-        console.log(Vue)
     },
     methods:{
         getList(){
-            let param={pageNum:1,pageSize:10,rankType:"GOLD_WEEK"};
-            this.$axios.post('/ranking/live_ranking_list',param).then((res)=>{
-                console.log(res)
-            }).catch((res)=>{
-                console.log(res,'error')
-            })
+            
         }
     }
 }

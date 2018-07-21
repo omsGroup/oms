@@ -8,6 +8,17 @@
                 <Header></Header>
             </div>
             <div class="content-body">
+                <div class="content-nav-tab">
+                    <el-tabs v-model="editableTabsValue" 
+                             type="card" 
+                             editable
+                             @edit="handleTabsEdit">
+                        <el-tab-pane label="tabl"
+                                     name="tabl"></el-tab-pane>
+                        <el-tab-pane label="tabl1"
+                                     name="tabl1"></el-tab-pane>
+                    </el-tabs>
+                </div>
                 <div class="content-inner-page">
                     <router-view></router-view>
                 </div>
@@ -27,7 +38,21 @@ export default {
     },
     data() {
         return {
-
+            editableTabsValue:'',
+            tabData:[]
+        }
+    },
+    mounted(){
+        this.tabData=localStorage.getItem('tabData');
+        console.log(this.tabData)
+    },
+    methods:{
+        handleTabsEdit(targetName,action){
+            if(action === 'add'){
+                
+            }else if(action === 'remove'){
+                
+            }
         }
     }
 }

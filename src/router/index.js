@@ -23,28 +23,32 @@ export default new Router({
         name: 'layout',
         component: layout,
         children: [{
+            path: '',
+            name: '',
+            redirect:'/home',
+        },{
             path: '/home',
-            name: 'home',
+            name: '首页',
             component: home
         }, {
             path:'/userInfo',
-            name:'userInfo',
+            name:'用户信息',
             component:userInfo
         }, {
             path:'/userAudit',
-            name:'userAudit',
+            name:'用户审核',
             component:userAudit
         }, {
             path:'/financeInfo',
-            name:'financeInfo',
+            name:'财务信息',
             component:financeInfo
         }, {
             path:'/systemSetting',
-            name:'systemSetting',
+            name:'系统设置',
             component:systemSetting
         },{
             path:'/authorityManagement',
-            name:'authorityManagement',
+            name:'权限管理',
             component:authorityManagement
         }]
     }, {

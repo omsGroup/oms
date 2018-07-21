@@ -113,10 +113,10 @@ export default {
             this.$refs.form.validate((valid) => {
                 if (valid) {
                     this.$axios.postFormat('/v1/login',this.form).then((res)=>{
+                        localStorage.setItem('userInfo',JSON.stringify(res.data))
                         this.$message.success("登录成功");
                         this.$router.replace('/layout');
                     }).catch((error)=>{
-                        console.log(error,1)
                         this.$message.error('登录失败')
                     })
                 }
