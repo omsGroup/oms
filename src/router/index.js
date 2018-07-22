@@ -60,9 +60,11 @@ const Routers = new Router({
 
 Routers.beforeEach((to, from, next)=>{
     let tabsData=[]
+    console.log(from,to)
     if(to.path!=='/'){
         if(!localStorage.getItem('userInfo')){
             next('/')
+            return
         }
     }
     if(localStorage.getItem('tabsData')){

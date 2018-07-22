@@ -44,7 +44,6 @@ export default {
     },
     mounted(){
         this.tabData=localStorage.getItem('tabData');
-        console.log(this.tabData)
     },
     methods:{
         handleTabsEdit(targetName,action){

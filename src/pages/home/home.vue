@@ -71,7 +71,6 @@ export default{
             this.initChart()
         }
         this.initChart();
-        
     },
     methods:{
         getList(){
