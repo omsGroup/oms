@@ -105,8 +105,8 @@ export default {
             },
         }
     },
-    mounted() {
-        
+    mounted() { 
+        console.log(this,333)
     },
     methods: {
         submitLogin() {

@@ -13,7 +13,7 @@ const authorityManagement = r => require.ensure([], () => r(require('@/pages/sys
 
 Vue.use(Router);
 
-export default new Router({
+const Routers = new Router({
     routes: [{
         path: '/',
         name: 'login',
@@ -57,3 +57,25 @@ export default new Router({
         component: recover
     }]
 })
+
+Routers.beforeEach((to, from, next)=>{
+    let tabsData=[]
+    if(to.path!=='/'){
+        if(!localStorage.getItem('userInfo')){
+            next('/')
+        }
+    }
+    if(localStorage.getItem('tabsData')){
+        let tabsData=JSON.parse(localStorage.getItem('tabsData'))
+        for(let i=0;i<tabsData.length;i++){
+            if(tabsData[i].name===to.name){
+                return
+            }
+        }
+        tabsData.push({name:to.name,path:to.path})
+        localStorage.setItem('tabsData',JSON.stringify(tabsData))
+    }
+    next();
+})
+
+export default Routers

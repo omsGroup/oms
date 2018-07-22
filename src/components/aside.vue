@@ -1,18 +1,18 @@
 <template>
     <div class="aside-pages">
-        <el-menu :default-active="$route.path" 
+        <el-menu :default-active="$route.path"
                  :router="true"
                  :unique-opened="true"
                  class="el-menu-demo"
                  text-color="#fff"
                  active-text-color="#ffd04b"
-                 background-color="#324057" 
+                 background-color="#324057"
                  @select="handleSelect">
             <el-menu-item index="/home">
                 <span class="iconfont icon-all"></span><span>首页</span>
             </el-menu-item>
-            <el-submenu v-for="(item,index) in tabList" 
-                        :key="index" 
+            <el-submenu v-for="(item,index) in tabList"
+                        :key="index"
                         :index="item.path">
                 <template slot="title">
                     <span :class="'iconfont '+ item.icon"></span>
