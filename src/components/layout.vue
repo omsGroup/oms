@@ -13,10 +13,11 @@
                              type="card" 
                              editable
                              @edit="handleTabsEdit">
-                        <el-tab-pane label="tabl"
-                                     name="tabl"></el-tab-pane>
-                        <el-tab-pane label="tabl1"
-                                     name="tabl1"></el-tab-pane>
+                        <el-tab-pane v-for="(item,index) in tabData"
+                                     :key="index" 
+                                     :label="item.title"
+                                     :name="item.name">
+                        </el-tab-pane>
                     </el-tabs>
                 </div>
                 <div class="content-inner-page">
@@ -43,7 +44,8 @@ export default {
         }
     },
     mounted(){
-        this.tabData=localStorage.getItem('tabData');
+        this.$set(this,'tabData',JSON.parse(localStorage.getItem('tabsData')))
+        console.log(this.tabData)
     },
     methods:{
         handleTabsEdit(targetName,action){

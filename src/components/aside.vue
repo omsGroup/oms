@@ -41,12 +41,7 @@ export default{
     },
     methods:{
         handleSelect(val,keyPath){
-            localStorage.getItem('tabsArray')
-            if(localStorage.getItem('tabsArray')){
-                
-            }else{
-                
-            }
+            
         },
     }
 }    

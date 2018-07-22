@@ -67,7 +67,6 @@ export default{
     },
     mounted(){
         window.onresize=()=>{
-            console.log('resize')
             this.initChart()
         }
         this.initChart();

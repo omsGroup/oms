@@ -22,11 +22,8 @@ const Routers = new Router({
         path: '/layout',
         name: 'layout',
         component: layout,
+        redirect:'/home',
         children: [{
-            path: '',
-            name: '',
-            redirect:'/home',
-        },{
             path: '/home',
             name: '首页',
             component: home
@@ -60,7 +57,6 @@ const Routers = new Router({
 
 Routers.beforeEach((to, from, next)=>{
     let tabsData=[]
-    console.log(from,to)
     if(to.path!=='/'){
         if(!localStorage.getItem('userInfo')){
             next('/')
@@ -69,13 +65,18 @@ Routers.beforeEach((to, from, next)=>{
     }
     if(localStorage.getItem('tabsData')){
         let tabsData=JSON.parse(localStorage.getItem('tabsData'))
-        for(let i=0;i<tabsData.length;i++){
-            if(tabsData[i].name===to.name){
-                return
-            }
+        let findRepeat=tabsData.findIndex((value,index,tabsData)=>{
+            return value.name===to.name
+        })
+        if(findRepeat===-1){
+            tabsData.push({title:to.name,name:to.name,path:to.path})
+            localStorage.setItem('tabsData',JSON.stringify(tabsData))
         }
-        tabsData.push({name:to.name,path:to.path})
-        localStorage.setItem('tabsData',JSON.stringify(tabsData))
+    }else{
+        if(to.name!=='login'){
+            tabsData.push({title:to.name,name:to.name,path:to.path})
+            localStorage.setItem('tabsData',JSON.stringify(tabsData))
+        }
     }
     next();
 })
