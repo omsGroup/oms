@@ -66,15 +66,23 @@ export default{
         }
     },
     mounted(){
-        let blockCharts=echart.init(document.getElementById('homeBlockEchart'));
-        blockCharts.setOption(this.blockOption);
-        let lineCharts=echart.init(document.getElementById('homeLineEchart'));
-        lineCharts.setOption(this.lineOption);
-        this.getList();
+        window.onresize=()=>{
+            console.log('resize')
+            this.initChart()
+        }
+        this.initChart();
+        
     },
     methods:{
         getList(){
             
+        },
+        initChart(){
+            let blockCharts=echart.init(document.getElementById('homeBlockEchart'));
+            blockCharts.setOption(this.blockOption);
+            let lineCharts=echart.init(document.getElementById('homeLineEchart'));
+            lineCharts.setOption(this.lineOption);
+            this.getList();
         }
     }
 }
