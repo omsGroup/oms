@@ -62,12 +62,15 @@ export default{
                     data: [820, 932, 901, 934, 1290, 1330, 1320],
                     type: 'line'
                 }]
-            }
+            },
+            blockCharts:'',
+            lineCharts:''
         }
     },
     mounted(){
         window.onresize=()=>{
-            this.initChart()
+            this.blockCharts.resize()
+            this.lineCharts.resize()
         }
         this.initChart();
     },
@@ -76,10 +79,10 @@ export default{
             
         },
         initChart(){
-            let blockCharts=echart.init(document.getElementById('homeBlockEchart'));
-            blockCharts.setOption(this.blockOption);
-            let lineCharts=echart.init(document.getElementById('homeLineEchart'));
-            lineCharts.setOption(this.lineOption);
+            this.blockCharts=echart.init(document.getElementById('homeBlockEchart'));
+            this.blockCharts.setOption(this.blockOption);
+            this.lineCharts=echart.init(document.getElementById('homeLineEchart'));
+            this.lineCharts.setOption(this.lineOption);
             this.getList();
         }
     }
