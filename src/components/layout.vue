@@ -50,7 +50,6 @@ export default {
     },
     mounted(){
         this.$set(this,'tabData',JSON.parse(localStorage.getItem('tabsData')))
-        console.log(this)
     },
     methods:{
         handleTabsEdit(targetName,action){
