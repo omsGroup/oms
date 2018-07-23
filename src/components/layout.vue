@@ -43,9 +43,14 @@ export default {
             tabData:[]
         }
     },
+    computed:{
+        author(){
+            return this.$store.state.author;
+        }
+    },
     mounted(){
         this.$set(this,'tabData',JSON.parse(localStorage.getItem('tabsData')))
-        console.log(this.tabData)
+        console.log(this)
     },
     methods:{
         handleTabsEdit(targetName,action){
