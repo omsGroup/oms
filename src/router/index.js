@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import login from '@/components/login'
+import store from '../vuex/store.js'
 const recover = r => require.ensure([], () => r(require('@/pages/recover/recover')), 'recover');
 const layout = r => require.ensure([], () => r(require('@/components/layout')), 'layout');
 const home = r => require.ensure([], () => r(require('@/pages/home/home')), 'home');
@@ -71,11 +72,14 @@ Routers.beforeEach((to, from, next)=>{
         if(findRepeat===-1){
             tabsData.push({title:to.name,name:to.name,path:to.path})
             localStorage.setItem('tabsData',JSON.stringify(tabsData))
+            store.commit('setTabs')
         }
+        store.commit('setTabs')
     }else{
         if(to.name!=='login'){
             tabsData.push({title:to.name,name:to.name,path:to.path})
             localStorage.setItem('tabsData',JSON.stringify(tabsData))
+            store.commit('setTabs')
         }
     }
     next();

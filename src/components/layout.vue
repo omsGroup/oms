@@ -13,7 +13,7 @@
                              type="card" 
                              editable
                              @edit="handleTabsEdit">
-                        <el-tab-pane v-for="(item,index) in tabData"
+                        <el-tab-pane v-for="(item,index) in author"
                                      :key="index" 
                                      :label="item.title"
                                      :name="item.name">
@@ -40,16 +40,15 @@ export default {
     data() {
         return {
             editableTabsValue:'',
-            tabData:[]
         }
     },
     computed:{
         author(){
-            return this.$store.state.author;
+            return this.$store.state.tabsData;
         }
     },
     mounted(){
-        this.$set(this,'tabData',JSON.parse(localStorage.getItem('tabsData')))
+        
     },
     methods:{
         handleTabsEdit(targetName,action){

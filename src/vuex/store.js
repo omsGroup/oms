@@ -5,11 +5,14 @@ Vue.use(Vuex)
 const store=new Vuex.Store({
     state:{
         author:'BWW',
-        tabData:JSON.parse(localStorage.getItem('tabsData'))
+        tabsData:''
     },
-    mutations:{
+    mutations:{ 
     	saveTabs(state,msg){
-    		localStorage.setItem(JSON.stringify(msg))
+    		localStorage.setItem('tabsData',JSON.stringify(msg))
+    	},
+    	setTabs(state){
+    		state.tabsData=JSON.parse(localStorage.getItem('tabsData'))
     	}
     }
 })
