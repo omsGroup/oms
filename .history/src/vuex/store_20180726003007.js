@@ -17,6 +17,7 @@ const store=new Vuex.Store({
         },
         setCurrTabs(state){
             state.currTabs = localStorage.getItem('currTabs')
+            console.log(localStorage.getItem('currTabs'), state.currTabs)
         }
     }
 })

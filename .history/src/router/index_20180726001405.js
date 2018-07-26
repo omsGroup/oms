@@ -74,18 +74,16 @@ Routers.beforeEach((to, from, next)=>{
             localStorage.setItem('tabsData',JSON.stringify(tabsData))
             store.commit('setTabs')
         }
-        localStorage.setItem('currTabs', to.name)
         store.commit('setTabs')
-        store.commit('setCurrTabs')
     }else{
         if(to.name!=='login'){
             tabsData.push({title:to.name,name:to.name,path:to.path})
-            localStorage.setItem('tabsData', JSON.stringify(tabsData))
-            localStorage.setItem('currTabs', tabsData[0].name)
+            localStorage.setItem('tabsData',JSON.stringify(tabsData))
             store.commit('setTabs')
-            store.commit('setCurrTabs')
         }
     }
+    console.log(tabsData,to)
+    localStorage.setItem('currTabs', tabsData.findIndex(item => item.name === to.name))
     next();
 })
 

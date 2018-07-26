@@ -14,10 +14,7 @@ const store=new Vuex.Store({
     	},
     	setTabs(state){
     		state.tabsData=JSON.parse(localStorage.getItem('tabsData'))
-        },
-        setCurrTabs(state){
-            state.currTabs = localStorage.getItem('currTabs')
-        }
+    	},
     }
 })
 export default store

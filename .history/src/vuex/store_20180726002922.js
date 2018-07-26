@@ -16,6 +16,7 @@ const store=new Vuex.Store({
     		state.tabsData=JSON.parse(localStorage.getItem('tabsData'))
         },
         setCurrTabs(state){
+            console.log('commit')
             state.currTabs = localStorage.getItem('currTabs')
         }
     }

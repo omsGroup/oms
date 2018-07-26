@@ -8,7 +8,7 @@
                 <Header></Header>
             </div>
             <div class="content-body">
-                <div class="content-nav-tab" >
+                <div class="content-nav-tab">
                     <el-tabs v-model="currTab" 
                              type="card" 
                              closable
@@ -17,6 +17,7 @@
                                      :key="index" 
                                      :label="item.title"
                                      :name="item.name">
+                                     {{ currTab }}
                         </el-tab-pane>
                     </el-tabs>
                 </div>
@@ -51,7 +52,7 @@ export default {
         }
     },
     mounted(){
-        console.log(this.currTab,12)
+
     },
     methods:{
         handleTabsEdit(targetName){

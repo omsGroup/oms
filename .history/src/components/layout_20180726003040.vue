@@ -8,8 +8,8 @@
                 <Header></Header>
             </div>
             <div class="content-body">
-                <div class="content-nav-tab" >
-                    <el-tabs v-model="currTab" 
+                <div class="content-nav-tab">
+                    <el-tabs v-model="currTabs" 
                              type="card" 
                              closable
                              @tab-remove="handleTabsEdit">
@@ -39,7 +39,7 @@ export default {
     },
     data() {
         return {
-            currTab:this.currTabs
+            
         }
     },
     computed:{
@@ -51,7 +51,6 @@ export default {
         }
     },
     mounted(){
-        console.log(this.currTab,12)
     },
     methods:{
         handleTabsEdit(targetName){

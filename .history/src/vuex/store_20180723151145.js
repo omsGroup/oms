@@ -5,8 +5,7 @@ Vue.use(Vuex)
 const store=new Vuex.Store({
     state:{
         author:'BWW',
-        tabsData:'',
-        currTabs:''
+        tabsData:''
     },
     mutations:{ 
     	saveTabs(state,msg){
@@ -14,10 +13,7 @@ const store=new Vuex.Store({
     	},
     	setTabs(state){
     		state.tabsData=JSON.parse(localStorage.getItem('tabsData'))
-        },
-        setCurrTabs(state){
-            state.currTabs = localStorage.getItem('currTabs')
-        }
+    	}
     }
 })
 export default store

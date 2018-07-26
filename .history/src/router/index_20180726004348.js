@@ -74,7 +74,7 @@ Routers.beforeEach((to, from, next)=>{
             localStorage.setItem('tabsData',JSON.stringify(tabsData))
             store.commit('setTabs')
         }
-        localStorage.setItem('currTabs', to.name)
+        localStorage.setItem('currTabs', toString.name)
         store.commit('setTabs')
         store.commit('setCurrTabs')
     }else{

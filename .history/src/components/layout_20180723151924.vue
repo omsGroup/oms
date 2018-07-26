@@ -8,11 +8,11 @@
                 <Header></Header>
             </div>
             <div class="content-body">
-                <div class="content-nav-tab" >
-                    <el-tabs v-model="currTab" 
+                <div class="content-nav-tab">
+                    <el-tabs v-model="editableTabsValue" 
                              type="card" 
-                             closable
-                             @tab-remove="handleTabsEdit">
+                             editable
+                             @edit="handleTabsEdit">
                         <el-tab-pane v-for="(item,index) in author"
                                      :key="index" 
                                      :label="item.title"
@@ -39,24 +39,24 @@ export default {
     },
     data() {
         return {
-            currTab:this.currTabs
+            editableTabsValue:'',
         }
     },
     computed:{
         author(){
             return this.$store.state.tabsData;
-        },
-        currTabs(){
-            return this.$store.state.currTabs
         }
     },
     mounted(){
-        console.log(this.currTab,12)
+        
     },
     methods:{
-        handleTabsEdit(targetName){
-            this.author.splice(this.author.findIndex(item=>item.name===targetName),1);
-            localStorage.setItem('tabsData',JSON.stringify(this.author))
+        handleTabsEdit(targetName,action){
+            if(action === 'add'){
+                
+            }else if(action === 'remove'){
+                
+            }
         }
     }
 }

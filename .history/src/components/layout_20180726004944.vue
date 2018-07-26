@@ -51,7 +51,7 @@ export default {
         }
     },
     mounted(){
-        console.log(this.currTab,12)
+        console.log(this.currTab)
     },
     methods:{
         handleTabsEdit(targetName){
