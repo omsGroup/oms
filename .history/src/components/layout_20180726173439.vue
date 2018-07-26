@@ -12,12 +12,11 @@
                     <el-tabs v-model="currTab" 
                              type="card" 
                              closable
-                             @tab-remove="handleTabsEdit" 
-                             @tab-click="handleTabPane">
+                             @tab-remove="handleTabsEdit">
                         <el-tab-pane v-for="(item,index) in author"
                                      :key="index" 
                                      :label="item.title"
-                                     :name="item.name" >
+                                     :name="item.name">
                         </el-tab-pane>
                     </el-tabs>
                 </div>
@@ -41,8 +40,7 @@ export default {
     },
     data() {
         return {
-            currTab:'',
-            tabsData:''
+            currTab:this.currTabs
         }
     },
     computed:{
@@ -51,7 +49,7 @@ export default {
         },
         currTabs(){
             return this.$store.state.currTabs
-        },
+        }
     },
     watch:{
         currTabs:{
@@ -65,16 +63,8 @@ export default {
     },
     methods:{
         handleTabsEdit(targetName){
-            let currTar=false
-            if(this.currTab===this.author[this.author.findIndex(item=>item.name===targetName)].name){
-                currTar=true;
-            }
             this.author.splice(this.author.findIndex(item=>item.name===targetName),1);
             localStorage.setItem('tabsData',JSON.stringify(this.author))
-            currTar?this.$router.push(this.author[this.author.length-1].path):''
-        },
-        handleTabPane(val){
-            this.$router.push(this.author[val.index].path)
         }
     }
 }

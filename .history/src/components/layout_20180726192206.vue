@@ -65,16 +65,11 @@ export default {
     },
     methods:{
         handleTabsEdit(targetName){
-            let currTar=false
-            if(this.currTab===this.author[this.author.findIndex(item=>item.name===targetName)].name){
-                currTar=true;
-            }
             this.author.splice(this.author.findIndex(item=>item.name===targetName),1);
             localStorage.setItem('tabsData',JSON.stringify(this.author))
-            currTar?this.$router.push(this.author[this.author.length-1].path):''
         },
         handleTabPane(val){
-            this.$router.push(this.author[val.index].path)
+            console.log(val)
         }
     }
 }

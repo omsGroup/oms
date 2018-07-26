@@ -19,5 +19,8 @@ const store=new Vuex.Store({
             state.currTabs = localStorage.getItem('currTabs')
         }
     },
+    getters:{
+        
+    }
 })
 export default store
