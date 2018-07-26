@@ -109,7 +109,6 @@ export default {
             padding:20px;
             overflow-y: scroll;
             display: flex;
-            flex-direction: column;
             .content-inner-page{
                 width: 100%;
                 height:100%;

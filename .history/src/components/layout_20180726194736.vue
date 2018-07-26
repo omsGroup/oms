@@ -108,12 +108,9 @@ export default {
             flex-grow: 1;
             padding:20px;
             overflow-y: scroll;
-            display: flex;
-            flex-direction: column;
             .content-inner-page{
                 width: 100%;
                 height:100%;
-                flex-grow: 1;
                 box-sizing: border-box;
                 padding:20px;
                 border:1px solid #dfe6ec;
