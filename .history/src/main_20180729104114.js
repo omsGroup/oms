@@ -8,6 +8,7 @@ import store from './vuex/store.js'
 import './assets/common.less'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import './assets/icon/iconfont.css'
 import * as filters from  './plugins/filters'
 import * as axios from '@/axios'
 

@@ -11,7 +11,7 @@
             <el-menu-item index="/home">
                 <svg class="icon" 
                      aria-hidden="true">
-                    <use xlink:href="#icon-home"></use>
+                    <use xlink:href="#icon-shanchu"></use>
                 </svg>
                 <span>首页</span>
             </el-menu-item>

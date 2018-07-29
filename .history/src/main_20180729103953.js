@@ -8,8 +8,10 @@ import store from './vuex/store.js'
 import './assets/common.less'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import './assets/icon/iconfont.css'
 import * as filters from  './plugins/filters'
 import * as axios from '@/axios'
+import 'http//at.alicdn.com/t/font_741279_7nyhfcnmofm.js'
 
 Vue.prototype.$axios = axios
 Object.keys(filters).forEach(key=>{

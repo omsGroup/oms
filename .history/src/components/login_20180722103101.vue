@@ -110,7 +110,6 @@ export default {
     },
     methods: {
         submitLogin() {
-            localStorage.clear();
             this.$refs.form.validate((valid) => {
                 if (valid) {
                     this.$axios.postFormat('/v1/login',this.form).then((res)=>{

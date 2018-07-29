@@ -9,20 +9,16 @@
                  background-color="#324057"
                  @select="handleSelect">
             <el-menu-item index="/home">
-                <svg class="icon" 
-                     aria-hidden="true">
-                    <use xlink:href="#icon-home"></use>
-                </svg>
-                <span>首页</span>
+                <span class="iconfont icon-all"></span><span>首页</span>
             </el-menu-item>
             <el-submenu v-for="(item,index) in tabList"
                         :key="index"
                         :index="item.path">
                 <template slot="title">
-                    <svg class="icon" 
-                         aria-hidden="true">
-                        <use :xlink:href="`#icon-${item.icon}`"></use>
+                    <svg class="icon" >
+                        <use></use>
                     </svg>
+                    <span :class="'iconfont '+ item.icon"></span>
                     <span>{{ item.label }}</span>
                 </template>
                 <el-menu-item v-for="(items,indexs) in item.options" 
@@ -39,10 +35,10 @@ export default{
     data(){
         return {
             tabList:[
-                {label:'用户',path:'/user',icon:'favorite',options:[{label:'用户信息',path:'/userInfo'}]},
-                {label:'审核',path:'/audit',icon:'edit',options:[{label:'用户审核',path:'/userAudit'}]},
-                {label:'财务',path:'/finance',icon:'gifts',options:[{label:'财务信息',path:'/financeInfo'}]},
-                {label:'系统',path:'/system',icon:'set',options:[{label:'系统设置',path:'/systemSetting'},{label:'权限管理',path:'/authorityManagement'}]}
+                {label:'用户',path:'/user',icon:'icon-favorite',options:[{label:'用户信息',path:'/userInfo'}]},
+                {label:'审核',path:'/audit',icon:'icon-edit',options:[{label:'用户审核',path:'/userAudit'}]},
+                {label:'财务',path:'/finance',icon:'icon-gifts',options:[{label:'财务信息',path:'/financeInfo'}]},
+                {label:'系统',path:'/system',icon:'icon-set',options:[{label:'系统设置',path:'/systemSetting'},{label:'权限管理',path:'/authorityManagement'}]}
             ]
         }
     },
