@@ -199,10 +199,10 @@ export default {
                 emissive: 0x000000,
                 //shading: THREE.FlatShading,
                 shading : THREE.SmoothShading,
-                map: THREE.ImageUtils.loadTexture('../assets/images/Generic_Celestia_asteroid_texture.jpg'),
-                bumpMap: THREE.ImageUtils.loadTexture('../assets/images/Generic_Celestia_asteroid_texture.jpg'),
+                map: THREE.ImageUtils.loadTexture('./Generic_Celestia_asteroid_texture.jpg'),
+                bumpMap: THREE.ImageUtils.loadTexture('./Generic_Celestia_asteroid_texture.jpg'),
                 bumpScale:   0.025,
-                specularMap: THREE.ImageUtils.loadTexture('../assets/images/Generic_Celestia_asteroid_texture.jpg'),
+                specularMap: THREE.ImageUtils.loadTexture('./Generic_Celestia_asteroid_texture.jpg'),
                 specular: new THREE.Color('grey')
             });
             
