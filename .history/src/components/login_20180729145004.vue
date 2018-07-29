@@ -276,17 +276,12 @@ export default {
     .login-pages {
         width: 100%;
         height: 100%;
-        position: relative;
         background: linear-gradient(to bottom, #000 0%, #1e1e1e 50%, #000 100%);
         .login-box {
             width: 300px;
             min-height: 280px;
             padding: 25px 40px 25px 20px;
             background: white;
-            position: absolute;
-            right:30px;
-            bottom:30px;
-            background: transparent;
         }
         .login-button {
             display: flex;

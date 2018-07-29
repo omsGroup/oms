@@ -1,14 +1,6 @@
 <template>
     <div id="canvas" 
          class="login-pages flex-center-center">
-        <script id="vertexShader" 
-                type="x-shader/x-vertex">
-            varying vec3 vNormal; void main() { vNormal = normalize( normalMatrix * normal ); gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }
-        </script>
-        <script id="fragmentShader" 
-                type="x-shader/x-vertex">
-            varying vec3 vNormal; void main() { float intensity = pow( 0.7 - dot( vNormal, vec3( 0.0, 0.0, 0.5 ) ), 4.0 ); gl_FragColor = vec4( 1.3, 1.0, 1.0, 1.0 ) * intensity; }
-        </script>
         <div class="login-box flex-center-center">
             <el-form ref="form"
                      :model="form"
@@ -128,8 +120,10 @@ export default {
         }
     },
     mounted() { 
-        this.init();
-        this.animate();
+        window.onload=()=>{
+            this.init();
+            this.animate();
+        }
     },
     methods: {
         submitLogin() {
@@ -150,19 +144,19 @@ export default {
             this.$router.replace('/recover');
         },
         init() {
-            this.renderer = new THREE.WebGLRenderer({
+            let renderer = new THREE.WebGLRenderer({
                 antialias: true,
                 alpha: true
             });
-            this.renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-            this.renderer.setSize(window.innerWidth, window.innerHeight);
-            this.renderer.autoClear = false;
-            this.renderer.setClearColor(0x000000, 0.0);
-            document.getElementById('canvas').appendChild(this.renderer.domElement);
+            renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.autoClear = false;
+            renderer.setClearColor(0x000000, 0.0);
+            document.getElementById('canvas').appendChild(renderer.domElement);
 
             this.scene = new THREE.Scene();
 
-            this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+            this.camera = new THREE.Perspectivethis.camera(75, window.innerWidth / window.innerHeight, 1, 1000);
             this.camera.position.z = 400;
             this.scene.add(this.camera);
 
@@ -208,8 +202,8 @@ export default {
             
             let mat3 = new THREE.ShaderMaterial({
                 uniforms: {},
-                vertexShader: document.getElementById('vertexShader')?document.getElementById('vertexShader').textContent:'',
-                fragmentShader: document.getElementById('fragmentShader')?document.getElementById('fragmentShader').textContent:'',
+                vertexShader: document.getElementById('vertexShader').textContent,
+                fragmentShader: document.getElementById('fragmentShader').textContent,
                 side: THREE.BackSide,
                 blending: THREE.AdditiveBlending,
                 transparent: true
@@ -243,17 +237,17 @@ export default {
             this.scene.add(this.lights[1]);
             this.scene.add(this.lights[2]);
             
-            window.addEventListener('resize', this.onWindowResize, false);
+            window.addEventListener('resize', onWindowResize, false);
 
         },
         onWindowResize() {
             this.camera.aspect = window.innerWidth / window.innerHeight;
             this.camera.updateProjectionMatrix();
-            this.renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setSize(window.innerWidth, window.innerHeight);
         },
         animate() {
             let timer = 0.0001 * Date.now();
-            requestAnimationFrame(this.animate);
+            requestAnimationFrame(animate);
 
             this.particle.rotation.x += 0.0000;
             this.particle.rotation.y -= 0.0040;
@@ -265,8 +259,8 @@ export default {
             //halo.scale.x = Math.sin( timer * 3) * 0.09 + 1;
             //halo.scale.y = Math.sin( timer * 7 ) * 0.09 + 1;
             
-            this.renderer.clear();
-            this.renderer.render(this.scene, this.camera)
+            renderer.clear();
+            renderer.render(this.scene, this.camera)
         }
     }
 }
@@ -276,17 +270,12 @@ export default {
     .login-pages {
         width: 100%;
         height: 100%;
-        position: relative;
-        background: linear-gradient(to bottom, #000 0%, #1e1e1e 50%, #000 100%);
+        background: gray;
         .login-box {
             width: 300px;
             min-height: 280px;
             padding: 25px 40px 25px 20px;
             background: white;
-            position: absolute;
-            right:30px;
-            bottom:30px;
-            background: transparent;
         }
         .login-button {
             display: flex;

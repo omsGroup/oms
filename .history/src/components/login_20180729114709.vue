@@ -1,14 +1,5 @@
 <template>
-    <div id="canvas" 
-         class="login-pages flex-center-center">
-        <script id="vertexShader" 
-                type="x-shader/x-vertex">
-            varying vec3 vNormal; void main() { vNormal = normalize( normalMatrix * normal ); gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }
-        </script>
-        <script id="fragmentShader" 
-                type="x-shader/x-vertex">
-            varying vec3 vNormal; void main() { float intensity = pow( 0.7 - dot( vNormal, vec3( 0.0, 0.0, 0.5 ) ), 4.0 ); gl_FragColor = vec4( 1.3, 1.0, 1.0, 1.0 ) * intensity; }
-        </script>
+    <div class="login-pages flex-center-center">
         <div class="login-box flex-center-center">
             <el-form ref="form"
                      :model="form"
@@ -60,9 +51,6 @@
 <script>
 import echart from 'echarts'
 import Vue from 'vue'
-import * as THREE from 'three'
-import * as TWO from 'two'
-
 export default {
     data() {
         let confirmPassword = (rule, value, callback) => {
@@ -128,8 +116,9 @@ export default {
         }
     },
     mounted() { 
-        this.init();
-        this.animate();
+        window.onload=()=>{
+
+        }
     },
     methods: {
         submitLogin() {
@@ -150,31 +139,31 @@ export default {
             this.$router.replace('/recover');
         },
         init() {
-            this.renderer = new THREE.WebGLRenderer({
+            renderer = new THREE.WebGLRenderer({
                 antialias: true,
                 alpha: true
             });
-            this.renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-            this.renderer.setSize(window.innerWidth, window.innerHeight);
-            this.renderer.autoClear = false;
-            this.renderer.setClearColor(0x000000, 0.0);
-            document.getElementById('canvas').appendChild(this.renderer.domElement);
+            renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.autoClear = false;
+            renderer.setClearColor(0x000000, 0.0);
+            document.getElementById('canvas').appendChild(renderer.domElement);
 
-            this.scene = new THREE.Scene();
+            scene = new THREE.Scene();
 
-            this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
-            this.camera.position.z = 400;
-            this.scene.add(this.camera);
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+            camera.position.z = 400;
+            scene.add(camera);
 
-            this.circle = new THREE.Object3D();
-            this.particle = new THREE.Object3D();
-            this.halo = new THREE.Object3D();
-            this.luminor = new THREE.Object3D();
+            circle = new THREE.Object3D();
+            particle = new THREE.Object3D();
+            halo = new THREE.Object3D();
+            luminor = new THREE.Object3D();
             
-            this.scene.add(this.circle);
-            this.scene.add(this.particle);
-            this.scene.add(this.halo);
-            this.scene.add(this.luminor);
+            scene.add(circle);
+            scene.add(particle);
+            scene.add(halo);
+            scene.add(luminor);
 
             let geometry = new THREE.TetrahedronGeometry(1, 1);
             let geo_planet = new THREE.SphereGeometry(10, 64, 32);
@@ -191,7 +180,7 @@ export default {
                 mesh.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
                 mesh.position.multiplyScalar( 200 + (Math.random() * 500));
                 mesh.rotation.set(Math.random() * 2, Math.random() * 2, Math.random() * 2);
-                this.particle.add(mesh);
+                particle.add(mesh);
             }
             
             let mat = new THREE.MeshPhongMaterial({
@@ -208,8 +197,8 @@ export default {
             
             let mat3 = new THREE.ShaderMaterial({
                 uniforms: {},
-                vertexShader: document.getElementById('vertexShader')?document.getElementById('vertexShader').textContent:'',
-                fragmentShader: document.getElementById('fragmentShader')?document.getElementById('fragmentShader').textContent:'',
+                vertexShader: document.getElementById('vertexShader').textContent,
+                fragmentShader: document.getElementById('fragmentShader').textContent,
                 side: THREE.BackSide,
                 blending: THREE.AdditiveBlending,
                 transparent: true
@@ -217,57 +206,35 @@ export default {
 
             let planet = new THREE.Mesh(geo_planet, mat);
             planet.scale.x = planet.scale.y = planet.scale.z = 15;
-            this.circle.add(planet);
+            circle.add(planet);
 
             let ball = new THREE.Mesh(geom3, mat3);
             ball.scale.x = ball.scale.y = ball.scale.z = 16;
-            this.halo.add(ball);
+            halo.add(ball);
             
             let ball2 = new THREE.Mesh(geom3, mat3);
             ball2.scale.x = ball2.scale.y = ball2.scale.z = 12;
             ball2.position.set(25,5,1)
-            this.halo.add(ball2);
+            halo.add(ball2);
             
             let ambientLight = new THREE.AmbientLight(0x000000);
-            this.scene.add(ambientLight);
+            scene.add(ambientLight);
             
             let hemiLight = new THREE.HemisphereLight(0x000000, 0x1111111, 20);
-            hemiLight.position.set(-1, -1, 2);
-            this.luminor.add(hemiLight);
+                    hemiLight.position.set(-1, -1, 2);
+            luminor.add(hemiLight);
             
-            this.lights[1] = new THREE.DirectionalLight(0x000000, 7);
-            this.lights[1].position.set(-1, 0, 0.5);
-            this.lights[2] = new THREE.DirectionalLight(0x000000, 7);
-            this.lights[2].position.set(1, 0, 0.5);
+            lights[1] = new THREE.DirectionalLight(0x000000, 7);
+            lights[1].position.set(-1, 0, 0.5);
+            lights[2] = new THREE.DirectionalLight(0x000000, 7);
+            lights[2].position.set(1, 0, 0.5);
 
-            this.scene.add(this.lights[1]);
-            this.scene.add(this.lights[2]);
+            scene.add(lights[1]);
+            scene.add(lights[2]);
             
-            window.addEventListener('resize', this.onWindowResize, false);
+            window.addEventListener('resize', onWindowResize, false);
 
-        },
-        onWindowResize() {
-            this.camera.aspect = window.innerWidth / window.innerHeight;
-            this.camera.updateProjectionMatrix();
-            this.renderer.setSize(window.innerWidth, window.innerHeight);
-        },
-        animate() {
-            let timer = 0.0001 * Date.now();
-            requestAnimationFrame(this.animate);
-
-            this.particle.rotation.x += 0.0000;
-            this.particle.rotation.y -= 0.0040;
-            this.circle.rotation.x -= 0.001;
-            this.circle.rotation.y -= 0.001;
-            
-            this.halo.rotation.z -= 0.005;
-            this.luminor.rotation.z -= 0.005;
-            //halo.scale.x = Math.sin( timer * 3) * 0.09 + 1;
-            //halo.scale.y = Math.sin( timer * 7 ) * 0.09 + 1;
-            
-            this.renderer.clear();
-            this.renderer.render(this.scene, this.camera)
-        }
+            }
     }
 }
 
@@ -276,17 +243,12 @@ export default {
     .login-pages {
         width: 100%;
         height: 100%;
-        position: relative;
-        background: linear-gradient(to bottom, #000 0%, #1e1e1e 50%, #000 100%);
+        background: gray;
         .login-box {
             width: 300px;
             min-height: 280px;
             padding: 25px 40px 25px 20px;
             background: white;
-            position: absolute;
-            right:30px;
-            bottom:30px;
-            background: transparent;
         }
         .login-button {
             display: flex;

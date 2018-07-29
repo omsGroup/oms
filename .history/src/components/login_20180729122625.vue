@@ -1,14 +1,6 @@
 <template>
     <div id="canvas" 
          class="login-pages flex-center-center">
-        <script id="vertexShader" 
-                type="x-shader/x-vertex">
-            varying vec3 vNormal; void main() { vNormal = normalize( normalMatrix * normal ); gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }
-        </script>
-        <script id="fragmentShader" 
-                type="x-shader/x-vertex">
-            varying vec3 vNormal; void main() { float intensity = pow( 0.7 - dot( vNormal, vec3( 0.0, 0.0, 0.5 ) ), 4.0 ); gl_FragColor = vec4( 1.3, 1.0, 1.0, 1.0 ) * intensity; }
-        </script>
         <div class="login-box flex-center-center">
             <el-form ref="form"
                      :model="form"
@@ -128,8 +120,8 @@ export default {
         }
     },
     mounted() { 
-        this.init();
-        this.animate();
+            this.init();
+            this.animate();
     },
     methods: {
         submitLogin() {
@@ -208,8 +200,8 @@ export default {
             
             let mat3 = new THREE.ShaderMaterial({
                 uniforms: {},
-                vertexShader: document.getElementById('vertexShader')?document.getElementById('vertexShader').textContent:'',
-                fragmentShader: document.getElementById('fragmentShader')?document.getElementById('fragmentShader').textContent:'',
+                vertexShader: document.getElementById('vertexShader').textContent,
+                fragmentShader: document.getElementById('fragmentShader').textContent,
                 side: THREE.BackSide,
                 blending: THREE.AdditiveBlending,
                 transparent: true
@@ -243,7 +235,7 @@ export default {
             this.scene.add(this.lights[1]);
             this.scene.add(this.lights[2]);
             
-            window.addEventListener('resize', this.onWindowResize, false);
+            window.addEventListener('resize', onWindowResize, false);
 
         },
         onWindowResize() {
@@ -253,7 +245,7 @@ export default {
         },
         animate() {
             let timer = 0.0001 * Date.now();
-            requestAnimationFrame(this.animate);
+            requestAnimationFrame(animate);
 
             this.particle.rotation.x += 0.0000;
             this.particle.rotation.y -= 0.0040;
@@ -276,17 +268,12 @@ export default {
     .login-pages {
         width: 100%;
         height: 100%;
-        position: relative;
-        background: linear-gradient(to bottom, #000 0%, #1e1e1e 50%, #000 100%);
+        background: gray;
         .login-box {
             width: 300px;
             min-height: 280px;
             padding: 25px 40px 25px 20px;
             background: white;
-            position: absolute;
-            right:30px;
-            bottom:30px;
-            background: transparent;
         }
         .login-button {
             display: flex;

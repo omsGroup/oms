@@ -6,7 +6,7 @@
             varying vec3 vNormal; void main() { vNormal = normalize( normalMatrix * normal ); gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }
         </script>
         <script id="fragmentShader" 
-                type="x-shader/x-vertex">
+               type="x-shader/x-vertex">
             varying vec3 vNormal; void main() { float intensity = pow( 0.7 - dot( vNormal, vec3( 0.0, 0.0, 0.5 ) ), 4.0 ); gl_FragColor = vec4( 1.3, 1.0, 1.0, 1.0 ) * intensity; }
         </script>
         <div class="login-box flex-center-center">
@@ -276,17 +276,12 @@ export default {
     .login-pages {
         width: 100%;
         height: 100%;
-        position: relative;
-        background: linear-gradient(to bottom, #000 0%, #1e1e1e 50%, #000 100%);
+        background: gray;
         .login-box {
             width: 300px;
             min-height: 280px;
             padding: 25px 40px 25px 20px;
             background: white;
-            position: absolute;
-            right:30px;
-            bottom:30px;
-            background: transparent;
         }
         .login-button {
             display: flex;

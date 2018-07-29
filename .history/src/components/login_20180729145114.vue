@@ -286,7 +286,6 @@ export default {
             position: absolute;
             right:30px;
             bottom:30px;
-            background: transparent;
         }
         .login-button {
             display: flex;

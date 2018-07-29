@@ -3,4 +3,3 @@
 /dist/
 /*.js
 /test/unit/coverage/
-/src/assets/js/three.min.js
