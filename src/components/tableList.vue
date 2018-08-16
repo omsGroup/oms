@@ -14,7 +14,7 @@
                         :xs="23">
                     <el-form-item :label="item.label">
                         <el-input v-if="item.type === undefined || item.type === 'input'" 
-                                  v-model="searchForm[item.prop]" 
+                                  v-model="searchForm[item.prop]"
                                   size="mini"/>
                         <el-select v-if="item.type === 'select'" 
                                    v-model="searchForm[item.prop]"

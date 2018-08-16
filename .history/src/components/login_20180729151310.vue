@@ -61,7 +61,7 @@
 import echart from 'echarts'
 import Vue from 'vue'
 import * as THREE from 'three'
-import defaultImg from '../assets/images/Generic_Celestia_asteroid_texture.jpg'
+import * as TWO from 'two'
 
 export default {
     data() {
@@ -131,9 +131,6 @@ export default {
         this.init();
         this.animate();
     },
-    destory(){
-        THREE.Cache.clear()
-    },
     methods: {
         submitLogin() {
             localStorage.clear();
@@ -202,12 +199,13 @@ export default {
                 emissive: 0x000000,
                 //shading: THREE.FlatShading,
                 shading : THREE.SmoothShading,
-                map: THREE.ImageUtils.loadTexture(defaultImg),
-                bumpMap: THREE.ImageUtils.loadTexture(defaultImg),
+                map: THREE.ImageUtils.loadTexture('../assets/images/Generic_Celestia_asteroid_texture.jpg'),
+                bumpMap: THREE.ImageUtils.loadTexture('../assets/images/Generic_Celestia_asteroid_texture.jpg'),
                 bumpScale:   0.025,
-                specularMap: THREE.ImageUtils.loadTexture(defaultImg),
+                specularMap: THREE.ImageUtils.loadTexture('../assets/images/Generic_Celestia_asteroid_texture.jpg'),
                 specular: new THREE.Color('grey')
             });
+            
             let mat3 = new THREE.ShaderMaterial({
                 uniforms: {},
                 vertexShader: document.getElementById('vertexShader')?document.getElementById('vertexShader').textContent:'',

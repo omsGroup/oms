@@ -131,9 +131,6 @@ export default {
         this.init();
         this.animate();
     },
-    destory(){
-        THREE.Cache.clear()
-    },
     methods: {
         submitLogin() {
             localStorage.clear();
@@ -208,6 +205,7 @@ export default {
                 specularMap: THREE.ImageUtils.loadTexture(defaultImg),
                 specular: new THREE.Color('grey')
             });
+            console.log(mat)
             let mat3 = new THREE.ShaderMaterial({
                 uniforms: {},
                 vertexShader: document.getElementById('vertexShader')?document.getElementById('vertexShader').textContent:'',
