@@ -76,7 +76,7 @@ export default{
     },
     methods:{
         getList(){
-            console.log('12')
+            
         },
         initChart(){
             this.blockCharts=echart.init(document.getElementById('homeBlockEchart'));
