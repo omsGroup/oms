@@ -49,15 +49,15 @@ export default {
 <style lang="less">
     .login-pages {
         width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg,#419eff,#41ccff);
-        // background:#419eff;
+        height: 100%;    
+        // background: linear-gradient(90deg,#419eff,#41ccff);
+        background:#f2f2f2;
         .login-box{
             width: 400px;
             height:400px;
             // border:1px solid #999;
             border-radius:8px;
-            box-shadow: gainsboro 0px 0px 5px 5px;
+            box-shadow: #gray 0px 0px 10px 10px;
             background:#fff;
         }
     }

@@ -2,7 +2,7 @@
     <div id="canvas" 
          class="login-pages flex-center-center">
         <div class="login-box flex-center-center">
-            <div class="login">login</div>
+            
         </div>
     </div>
 </template>
@@ -18,6 +18,7 @@ export default {
             form: {
                 username: "",
                 password: "",
+                captcha: "",
             },
         }
     },
@@ -50,16 +51,7 @@ export default {
     .login-pages {
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg,#419eff,#41ccff);
-        // background:#419eff;
-        .login-box{
-            width: 400px;
-            height:400px;
-            // border:1px solid #999;
-            border-radius:8px;
-            box-shadow: gainsboro 0px 0px 5px 5px;
-            background:#fff;
-        }
+        position: relative;
     }
 
 </style>

@@ -50,8 +50,8 @@ export default {
     .login-pages {
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg,#419eff,#41ccff);
-        // background:#419eff;
+        // background: linear-gradient(90deg,#419eff,#41ccff);
+        background:#419eff;
         .login-box{
             width: 400px;
             height:400px;
